@@ -1,6 +1,9 @@
 ---
-layout: default
+layout: page
+title: Archive
+permalink: /archive/
 ---
+
 <div class="wrapper">
   <div class="home">
 
@@ -11,7 +14,6 @@ layout: default
           <h2>
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>          
-          {{ post.excerpt }}
         </li>
       {% endfor %}
     </ul>

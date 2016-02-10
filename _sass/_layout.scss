@@ -2,45 +2,81 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
-
     // Positioning context for the mobile navigation icon
     position: relative;
+    background-color: $brand-color;
+    border-bottom: solid 4px $accent-color;
+    background-image: url('/assets/cubes.png');
+    background-repeat: repeat;
 }
 
 .site-title {
+    vertical-align: middle;
     font-size: 26px;
     font-weight: 300;
-    line-height: 56px;
-    letter-spacing: -1px;
+    line-height: 80px;
     margin-bottom: 0;
     float: left;
-
+    font-family: $secondary-font-family;
     &,
     &:visited {
-        color: $grey-color-dark;
+        color: white;
     }
+    &:after{
+        display: inline-block;
+        content: ' ';
+        width: 1px;
+        height: 25px;
+        background-color: $accent-color;
+        vertical-align: middle;
+        margin-bottom: 3px;
+        margin-left: 3px;
+        animation: pulse 1s infinite;
+    }
+    &:hover{
+        text-decoration: none;
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+.sub-header{
+    background-color: $grey-color;
 }
 
 .site-nav {
     float: right;
-    line-height: 56px;
+    line-height: 30px;
 
     .menu-icon {
         display: none;
     }
 
     .page-link {
-        color: $text-color;
+        color: white;
         line-height: $base-line-height;
+        font-size: 15px;
 
         // Gaps between nav items, but not on the last one
         &:not(:last-child) {
             margin-right: 20px;
         }
-    }
+
+        &:hover{
+            text-decoration: none;
+            color: $accent-color;
+        }
+    }    
 
     @include media-query($on-palm) {
         position: absolute;
@@ -98,8 +134,9 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+    border-top: 1px solid lighten($grey-color-light, 30%);
     padding: $spacing-unit 0;
+    background-image: url('/assets/cubes-gray.png');
 }
 
 .footer-heading {
@@ -180,33 +217,60 @@
     list-style: none;
 
     > li {
-        margin-bottom: $spacing-unit;
+        margin-bottom: 5.5rem;
+    }
+
+    h2{
+        margin-bottom: 0;
+        .home &{
+            margin-bottom: 20px;
+        }
     }
 }
 
 .post-meta {
     font-size: $small-font-size;
-    color: $grey-color;
+    color: $grey-color-light;
+    overflow: hidden;
+    time{
+        float: right;
+    }
+    .home &{
+        font-style: italic;
+    }
 }
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-family: $secondary-font-family;
+    font-size: 26px;
+    &,
+    &:visited{
+        color: $grey-color;
+    }
+    &:hover{
+        text-decoration: none;
+        color: $brand-color;
+    }
 }
-
 
 
 /**
  * Posts
  */
 .post-header {
-    margin-bottom: $spacing-unit;
+    margin-bottom: 50px;
+    margin-top: -29px;
+    background-color: $grey-color;
 }
 
 .post-title {
-    font-size: 42px;
+    padding-top: 15px;
+    font-size: 36px;
     letter-spacing: -1px;
     line-height: 1;
+    font-family: $secondary-font-family;
+    color: white;
 
     @include media-query($on-laptop) {
         font-size: 36px;
@@ -225,7 +289,9 @@
     }
 
     h3 {
-        font-size: 26px;
+        font-size: 30px;
+        font-family: $base-font-family;
+        color: $grey-color;
 
         @include media-query($on-laptop) {
             font-size: 22px;
@@ -239,4 +305,60 @@
             font-size: 18px;
         }
     }
+}
+
+.article-body{
+    h3{
+        margin-top: 50px;
+    }
+    p{
+        margin-bottom: 30px;
+    }
+}
+
+.home{
+    margin-top: 20px;
+}
+
+.author-link{
+    color: $accent-color;
+    &:hover{
+        color: white;
+    }    
+}
+
+/* browser support table */
+.browser-support{
+    width: 100%;
+    margin: 10px 0 40px 0;
+    tr{
+        display: flex;          
+        height: 100%;
+    }
+    td{
+        border: solid 1px #bbb; 
+        padding: 10px;  
+    }
+    td, th{
+        flex: 1;
+        text-align: center;  
+    }
+    .yes{
+        background-color: #86e35d;
+    }
+    .no{
+        background-color: #ff8181;
+    }
+    .partial{
+        background-color: #ffbc64;
+    }
+    .flagged{
+        background-color: #bada55;
+    }   
+}
+.browser-support-header{
+    align-items: flex-end;
+}
+.browser-support-cell{
+    align-items: stretch;           
 }
