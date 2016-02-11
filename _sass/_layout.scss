@@ -217,7 +217,7 @@
     list-style: none;
 
     > li {
-        margin-bottom: 5.5rem;
+        margin-bottom: 50px;
     }
 
     h2{
@@ -232,6 +232,7 @@
     font-size: $small-font-size;
     color: $grey-color-light;
     overflow: hidden;
+    margin: 0;
     time{
         float: right;
     }
@@ -259,6 +260,13 @@
  * Posts
  */
 .post-header {
+    margin-bottom: 50px;
+    margin-top: -29px;
+    padding: 25px 0;
+    background-color: $grey-color;
+}
+
+.page-header{
     margin-bottom: 50px;
     margin-top: -29px;
     background-color: $grey-color;
