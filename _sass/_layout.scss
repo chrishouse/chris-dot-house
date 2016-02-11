@@ -370,3 +370,20 @@
 .browser-support-cell{
     align-items: stretch;           
 }
+
+.image-float-left{
+    float: left;
+    margin: 0 13px 0 0;
+}
+
+.archive{
+    .post-list{
+        li{
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.read-more-link{
+    float: right;
+}

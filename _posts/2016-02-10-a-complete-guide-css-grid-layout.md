@@ -3,6 +3,8 @@ layout: post
 title:  "A Complete Guide to CSS Grid Layout"
 date:   2016-02-10 09:03:54 -0600
 author: Chris House
+categories: css
+tags: css
 excerpt_separator: end-excerpt
 ---
 
