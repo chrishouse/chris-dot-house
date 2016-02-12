@@ -82,8 +82,7 @@
         position: absolute;
         top: 9px;
         right: $spacing-unit / 2;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
+        background-color: $grey-color;
         border-radius: 5px;
         text-align: right;
 
@@ -101,7 +100,7 @@
                 height: 15px;
 
                 path {
-                    fill: $grey-color-dark;
+                    fill: white;
                 }
             }
         }
@@ -119,6 +118,7 @@
         .page-link {
             display: block;
             padding: 5px 10px;
+            color: $accent-color;
 
             &:not(:last-child) {
                 margin-right: 0;
@@ -276,7 +276,7 @@
     padding-top: 15px;
     font-size: 36px;
     letter-spacing: -1px;
-    line-height: 1;
+    line-height: 1.2;
     font-family: $secondary-font-family;
     color: white;
 
@@ -317,7 +317,7 @@
 
 .article-body{
     h3{
-        margin-top: 50px;
+        margin-top: 25px;
     }
     p{
         margin-bottom: 30px;
@@ -335,42 +335,6 @@
     }    
 }
 
-/* browser support table */
-.browser-support{
-    width: 100%;
-    margin: 10px 0 40px 0;
-    tr{
-        display: flex;          
-        height: 100%;
-    }
-    td{
-        border: solid 1px #bbb; 
-        padding: 10px;  
-    }
-    td, th{
-        flex: 1;
-        text-align: center;  
-    }
-    .yes{
-        background-color: #86e35d;
-    }
-    .no{
-        background-color: #ff8181;
-    }
-    .partial{
-        background-color: #ffbc64;
-    }
-    .flagged{
-        background-color: #bada55;
-    }   
-}
-.browser-support-header{
-    align-items: flex-end;
-}
-.browser-support-cell{
-    align-items: stretch;           
-}
-
 .image-float-left{
     float: left;
     margin: 0 13px 0 0;
@@ -386,4 +350,214 @@
 
 .read-more-link{
     float: right;
+}
+
+.collapsible-control{
+    &.collapsed{
+        &:before{
+            content: '\25B6';
+            color: $brand-color;
+            vertical-align: middle;
+        }
+    }
+    &.expanded{
+       &:before{
+            content: '\25BC';
+            color: $brand-color;
+            font-size: 18px;
+            vertical-align: middle;
+        } 
+    }
+    &:hover{
+        cursor: pointer;
+        color: $brand-color;
+    }
+}
+
+.collapsible-section{
+    display: none;
+}
+
+/* css grid layout post */
+/* browser support table */
+.browser-support{
+    height: 120px;
+    width: 100%;
+    margin: 10px 0 40px 0;
+    display: flex;    
+    .browser-support-cell{
+        height: 100%;
+        border: solid 1px white;
+        display: flex;
+        flex-direction: column;
+        .browser-support-name,
+        .browser-support-info{
+            text-align: center;
+            line-height: 1;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 4px;
+        }
+        .browser-support-name{
+            justify-content: flex-end;
+            padding: 10px 10px 3px 10px;
+        }
+        .browser-support-info{
+            justify-content: center;
+            padding: 10px;
+            @include media-query($on-laptop){
+                margin-bottom: 8px;
+            }
+        }
+    }
+    .yes{
+        background-color: #86e35d;
+    }
+    .no{
+        background-color: #ff8181;
+    }
+    .partial{
+        background-color: #ffbc64;
+    }
+    .flagged{
+        background-color: #bada55;
+    }  
+    @include media-query($on-laptop){
+        width: 50%;
+        margin: 0 auto;
+        flex-direction: column;
+        height: auto;
+    }
+    @include media-query($on-palm){
+        width: 100%;
+    }
+}
+
+.grid-terms{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    .standout{
+        color: red;
+        font-weight: bold;
+    }
+}
+
+.grid-term-container{
+    display: flex;
+    padding: 20px 0;
+    border-bottom: dotted 1px black;
+}
+
+.grid-terms-term{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;    
+    flex: 1; 
+    padding: 25px; 
+    text-align: center;  
+    h4{
+        font-size: 26px;
+        font-style: italic;
+        font-weight: bold;
+    }
+    p{
+        margin: 0;        
+    }
+}
+
+.grid-terms-diagram{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    flex: 1;
+    padding: 25px;
+    .highlight, pre{
+        margin: 0;
+    }
+}
+
+.grid-diagram{
+    width: 85%;
+    margin: 0 auto;
+    height: 200px;  
+    div{
+        width: 30%;
+        height: 50%;
+        float: left;
+        background-color: white;
+    }
+    .cell-1{
+        border-left: solid 5px #444;
+        border-top: solid 5px #444;
+        border-right: solid 5px #444;
+    }
+    .cell-2{
+        border-top: solid 5px #444;
+    }
+    .cell-3{
+        border-left: solid 5px #444;
+        border-top: solid 5px #444;
+        border-right: solid 5px #444;
+    }
+    .cell-4{
+        clear: both;
+        border-left: solid 5px #444;
+        border-top: solid 5px #444;
+        border-bottom: solid 5px #444;
+    }
+    .cell-5{
+        border-bottom: solid 5px #444;
+        border-left: solid 5px #444;
+        border-top: solid 5px #444;
+    }
+    .cell-6{
+        border-left: solid 5px #444;
+        border-bottom: solid 5px #444;
+        border-right: solid 5px #444;
+        border-top: solid 5px #444;
+    }
+    &.grid-diagram-line{
+        .cell-3{
+            border-left: solid 5px $accent-color;
+        }
+        .cell-6{
+            border-left: solid 5px $accent-color;
+        }
+    }
+    &.grid-diagram-track{
+        .cell-4{
+            background-color: $accent-color;
+        }
+        .cell-5{
+            background-color: $accent-color;
+        }
+        .cell-6{
+            background-color: $accent-color;
+        }
+    }
+    &.grid-diagram-cell{
+        .cell-2{
+            background-color: $accent-color;
+        }
+    }
+    &.grid-diagram-area{
+        .cell-1{
+            background-color: $accent-color;
+        }
+        .cell-2{
+            background-color: $accent-color;
+        }
+        .cell-4{
+            background-color: $accent-color;
+        }
+        .cell-5{
+            background-color: $accent-color;
+        }
+    }
 }
