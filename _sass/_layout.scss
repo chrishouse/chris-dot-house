@@ -317,7 +317,7 @@
 
 .article-body{
     h3{
-        margin-top: 25px;
+        margin-top: 50px;
     }
     p{
         margin-bottom: 30px;
@@ -353,6 +353,7 @@
 }
 
 .collapsible-control{
+    margin-top: 25px !important;
     &.collapsed{
         &:before{
             display: inline-block;
@@ -447,10 +448,6 @@
     width: 100%;
     margin: 0 auto;
     flex-direction: column;
-    .standout{
-        color: red;
-        font-weight: bold;
-    }
 }
 
 .grid-term-container{
@@ -468,12 +465,16 @@
     padding: 25px; 
     text-align: center;  
     h4{
-        font-size: 26px;
+        font-size: 22px;
         font-weight: bold;
+    }
+    h5{
+        margin-top: 25px;
+        margin-bottom: 5px;
     }
     p{
         margin: 0;        
-    }
+    }    
 }
 
 .grid-terms-diagram{
@@ -566,4 +567,41 @@
             background-color: $accent-color;
         }
     }
+}
+
+.grid-properties{
+    padding: 25px;
+    background-color: lighten($accent-color, 43%);
+    border: solid 1px lighten($accent-color, 20%);
+    border-radius: 4px;
+    margin-bottom: 25px;
+    h4{
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        font-family: $secondary-font-family;        
+    }
+    h5{
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+    p, pre{
+        margin: 0;        
+    }
+    figure{
+        margin: 25px 0;
+    }
+    img{
+        margin-bottom: 45px;
+    }
+}
+
+.grid-properties-item{
+    background-color: lighten($brand-color, 45%);
+    border: solid 1px lighten($brand-color, 35%);
+}
+
+.values-list{
+    margin: 0 0 25px 0;
+    list-style-type: none;
 }

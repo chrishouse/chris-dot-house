@@ -160,3 +160,152 @@ Here's a browser support table which I'll keep up-to-date:
 		</div>
 	</section>
 </div>
+
+###Properties for the Grid Container
+
+<section class="grid-terms">
+	<div class="grid-properties">
+		<h4>display</h4>
+		<p>Defines the element as a grid container and establishes a new <em>grid formatting context</em> for its contents.</p>	
+		<h5>Values:</h5>
+		<ul class="values-list">
+			<li><b>grid</b> - generates a block-level grid</li>
+			<li><b>inline-grid</b> - generates an inline-level grid</li>
+		</ul>
+{% highlight css %}
+.container{
+  display: grid | inline-grid	
+}
+{% endhighlight %}			
+		<p>Note: column, float, clear, and vertical-align have no effect on a grid container.</p>			
+	</div>
+
+	<div class="grid-properties">
+		<h4>grid-template-columns<br />grid-template-rows</h4>
+		<p>Defines the columns and rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line.</p>
+		<h5>Values:</h5>
+		<ul class="values-list">
+			<li><b>&lt;number&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
+			<li><b>&lt;name&gt;</b> - an arbitrary name of your choosing</li>
+		</ul>
+{% highlight css %}
+.container{
+  grid-template-columns: <number> <number> <number> ...;
+  grid-template-rows: <number> <number> <number> ...;
+}
+{% endhighlight %}	
+		<p>When you leave an empty space between the track values, the grid lines are automatically assigned numerical names. But you can choose to explicitly name them:</p>	
+{% highlight css %}
+.container{
+  grid-template-columns: <name> <number> <name> <number> <name> <number> <name> ...;
+  grid-template-rows: <name> <number> <name> <number> <name> <number> <name> ...;
+}
+{% endhighlight %}	
+
+<p><b>Examples</b></p>
+<p>Letting the lines get named automatically:</p>
+{% highlight css %}
+.container{
+  grid-template-columns: 40px 50px auto 50px 40px;
+  grid-template-rows: 25% 100px auto;
+}
+{% endhighlight %}
+<img src="/assets/grid-numbers.png" alt="Grid with auto named lines">
+<p>Explicitly naming the lines. Note the bracket syntax for the line names:</p>
+{% highlight css %}
+.container{
+  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100% [third-line] auto [last-line];
+}
+{% endhighlight %}
+<img src="/assets/grid-names.png" alt="Grid with user named lines">
+	</div>	
+</section>
+
+###Properties for the Grid Items
+<section class="grid-terms">
+	<div class="grid-properties grid-properties-item">
+		<h4>grid-column-start<br />grid-column-end<br />grid-row-start<br />grid-row-end</h4>
+		<p>Determines a grid item's location within the grid by referring to specific grid lines. grid-column-start/grid-row-start is the line where the item begins, and grid-column-end/grid-row-end is the line where the item ends.</p>
+		<h5>Values:</h5>
+		<ul class="values-list">
+			<li><b>&lt;line&gt;</b> - can be a number to refer to a numbered grid line, or a name to refer to a named grid line</li>
+			<li><b>span &lt;number&gt;</b> - the item will span across the provided number of grid tracks</li>
+			<li><b>span &lt;name&gt;</b> - the item will span across until it hits the next line with the provided name</li>
+			<li><b>auto</b> - indicates auto-placement, an automatic span, or a default span of one</li>
+		</ul>
+{% highlight css %}
+.item{
+  grid-column-start: <number> | <name> | span <number> | span <name> | auto
+  grid-column-end: <number> | <name> | span <number> | span <name> | auto
+  grid-row-start: <number> | <name> | span <number> | span <name> | auto
+  grid-row-end: <number> | <name> | span <number> | span <name> | auto
+}
+{% endhighlight %}	
+		<p><b>Examples</b></p>
+{% highlight css %}
+.item-a{
+  grid-column-start: 2;
+  grid-column-end: five;
+  grid-row-start: row1-start
+  grid-row-end: 3
+}
+{% endhighlight %}
+	<img src="/assets/grid-start-end-a.png" alt="Example of grid-row/column-start/end">
+{% highlight css %}
+.item-b{
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
+  grid-row-start: 2
+  grid-row-end: span 2
+}
+{% endhighlight %}
+	<img src="/assets/grid-start-end-b.png" alt="Example of grid-row/column-start/end">
+	<p>If no grid-column-end/grid-row-end is declared, the item will span 1 track by default.</p>
+	</div>
+
+<div class="grid-properties grid-properties-item">
+		<h4>grid-column<br />grid-row</h4>
+		<p>Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row-end, respectively.</p>
+		<h5>Values:</h5>
+		<ul class="values-list">
+			<li><b>&lt;start-line&gt; / &lt;end-line&gt;</b> - each one accepts all the same values as the longhand version, including span</li>
+		</ul>
+{% highlight css %}
+.item{
+  grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+  grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+}
+{% endhighlight %}	
+		<p><b>Example</b></p>
+{% highlight css %}
+.item-c{
+  grid-column: 3 / span 2;
+  grid row: third-line / 4;
+}
+{% endhighlight %}
+	<img src="/assets/grid-start-end-c.png" alt="Example of grid-column/grid-row">
+	<p>If no end line value is declared, the item will span 1 track by default.</p>
+	</div>	
+
+<div class="grid-properties grid-properties-item">
+		<h4>grid-area</h4>
+		<p>An even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.</p>
+		<h5>Values:</h5>
+		<ul class="values-list">
+			<li><b>&lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;</b> - can be numbers or named lines</li>
+		</ul>
+{% highlight css %}
+.item{
+  grid-area: <row-start> / <column-start> / <row-end> / <column-end>;
+}
+{% endhighlight %}	
+		<p><b>Example</b></p>
+{% highlight css %}
+.item-d{
+  grid-area: 1 / col4-start / last-line / 6
+}
+{% endhighlight %}
+	<img src="/assets/grid-start-end-d.png" alt="Example of grid-area">
+	</div>	
+</section>	
