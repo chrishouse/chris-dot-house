@@ -177,7 +177,7 @@ Here's a browser support table which I'll keep up-to-date:
   display: grid | inline-grid	
 }
 {% endhighlight %}			
-		<p>Note: column, float, clear, and vertical-align have no effect on a grid container.</p>			
+		<p>Note: <code class="highlighter-rouge">column</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">clear</code>, and <code class="highlighter-rouge">vertical-align</code> have no effect on a grid container.</p>			
 	</div>
 
 	<div class="grid-properties">
@@ -219,6 +219,21 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 <img src="/assets/grid-names.png" alt="Grid with user named lines">
+	</div>	
+
+<div class="grid-properties">
+		<h4>grid-template-areas</h4>
+		<p></p>	
+		<h5>Values:</h5>
+		<ul class="values-list">
+			<li></li>
+		</ul>
+{% highlight css %}
+.container{
+
+}
+{% endhighlight %}			
+		<p>Note:</p>			
 	</div>	
 </section>
 
@@ -290,17 +305,25 @@ Here's a browser support table which I'll keep up-to-date:
 
 <div class="grid-properties grid-properties-item">
 		<h4>grid-area</h4>
-		<p>An even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.</p>
+		<p>Gives an item a name so that it cab be referenced by a template created with the <code class="highlighter-rouge">grid-template-areas</code> property. Alternatively, this property can be used as an even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
+			<li><b>&lt;name&gt;</b> - a name of your choosing</li>
 			<li><b>&lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;</b> - can be numbers or named lines</li>
 		</ul>
 {% highlight css %}
 .item{
-  grid-area: <row-start> / <column-start> / <row-end> / <column-end>;
+  grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
 }
 {% endhighlight %}	
-		<p><b>Example</b></p>
+		<p><b>Examples</b></p>
+		<p>As a way to assign a name to the item:</p>
+{% highlight css %}
+.item-d{
+  grid-area: header
+}
+{% endhighlight %}
+		<p>As the short-shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end:</p>
 {% highlight css %}
 .item-d{
   grid-area: 1 / col4-start / last-line / 6
