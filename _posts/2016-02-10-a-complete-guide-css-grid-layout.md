@@ -219,22 +219,89 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 <img src="/assets/grid-names.png" alt="Grid with user named lines">
+	<p>Note that a line can have more than one name. For example:</p>
+{% highlight css %}
+.container{
+  grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];
+}
+{% endhighlight %}	
+	<p>The second line will have two names: row1-end and row2-start.</p>
 	</div>	
 
-<div class="grid-properties">
+	<div class="grid-properties">
 		<h4>grid-template-areas</h4>
-		<p></p>	
+		<p>Defines a grid template by referencing the names of the grid areas which are specified with the <code class="hilighting-rouge">grid-area</code> property. Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.</p>	
 		<h5>Values:</h5>
-		<ul class="values-list">
-			<li></li>
+		<ul class="values-list">			
+			<li><b>&lt;grid-area-name&gt;</b> - the name of a grid area specified with <code class="hilighting-rouge">grid-area</code></li>
+			<li><b>.</b> - a period signifies an empty grid cell</li>
+			<li><b>none</b> - no grid areas are defined</li>
 		</ul>
 {% highlight css %}
 .container{
-
+  grid-template-areas: "<grid-area-name> | . | none | ..."
+                       "..."
 }
 {% endhighlight %}			
-		<p>Note:</p>			
-	</div>	
+		<p><b>Example:</b></p>	
+{% highlight css %}
+.item-a{
+  grid-area: header;
+}
+.item-b{
+  grid-area: main;
+}
+.item-c{
+  grid-area: sidebar;
+}
+.item-d{
+  grid-area: footer;
+}
+
+.container{
+  grid-template-areas: "header header header header"
+                       "main main . sidebar"
+                       "footer footer footer footer"
+}
+{% endhighlight %}	
+	<p>That'll create a grid that's four columns wide by three rows tall. The entire top row will be comprised of the <b>header</b> area. The middle row will be comprised of two <b>main</b> areas, one empty cell, and one <b>sidebar</b> area. The last row is all <b>footer</b>.</p>
+	<img src="/assets/grid-template-areas.png" alt="Example of grid-template-areas">
+	<p>Each row in your declaration needs to have the same number of cells.</p>
+	<p>You can use any number of adjacent periods to declare a single empty cell. As long as the periods have no spaces between them they represent a single cell.</p>
+	<p>Notice that you're not naming lines with this syntax, just areas. When you use this syntax the lines on either end of the areas are actually getting named automatically. If the name of your grid area is <b><em>foo</em></b>, the name of the area's starting row line and starting column line will be <b><em>foo</em>-start</b>, and the name of its last row line and last column line will be <b><em>foo</em>-end</b>. This means that some lines might have multiple names, such as the far left line in the above example, which will have three names: header-start, main-start, and footer-start.</p>
+	</div>
+
+	<div class="grid-properties">
+		<h4>grid-template</h4>
+		<p>A shorthand for setting <code class="highlighting-rouge">grid-template-columns</code>, <code class="highlighting-rouge">grid-template-rows</code>, and <code class="highlighting-rouge">grid-template-areas</code> in a single declaration.</p>	
+		<h5>Values:</h5>
+		<ul class="values-list">			
+			<li><b>none</b> - sets all three properties to their initial values</li>
+			<li><b>subgrid</b> - sets <code class="highlighting-rouge">grid-template-rows</code> and <code class="highlighting-rouge">grid-template-columns</code> to "subgrid", and <code class="highlighting-rouge">grid-template-areas</code> to its initial value</li>
+			<li><b>&lt;grid-template-columns&gt; / &lt;grid-template-rows&gt;</b> - sets <code class="highlighting-rouge">grid-template-columns</code> and <code class="highlighting-rouge">grid-template-rows</code> to the specified values, respectively, and sets <code class="highlighting-rouge">grid-template-areas</code> to "none"</li>
+		</ul>
+{% highlight css %}
+.container{
+  grid-template: none | subgrid | <grid-template-columns> / <grid-template-rows>;
+{% endhighlight %}		
+		<p>It also accepts a more complex but quite handy syntax for specifying all three. Here's an example:</p>	
+{% highlight css %}
+.container{
+  grid-template: auto 50px auto /
+                 [row1-start] 25px "header header header" [row1-end]
+                 [row2-start] "footer footer footer" 25px [row2-end]; 
+}
+{% endhighlight %}	
+<p>That's equivalent to this:</p>
+{% highlight css %}
+.container{
+  grid-template-columns: auto 50px auto;
+  grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];
+  grid-template-areas: "header header header"
+                       "footer footer footer"; 
+}
+{% endhighlight %}
+	</div>		
 </section>
 
 ###Properties for the Grid Items

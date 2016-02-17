@@ -319,9 +319,6 @@
     h3{
         margin-top: 50px;
     }
-    p{
-        margin-bottom: 30px;
-    }
 }
 
 .home{
@@ -574,7 +571,7 @@
     background-color: lighten($accent-color, 43%);
     border: solid 1px lighten($accent-color, 20%);
     border-radius: 4px;
-    margin-bottom: 25px;
+    margin-bottom: 45px;
     h4{
         font-size: 24px;
         font-weight: bold;
@@ -585,7 +582,7 @@
         margin-top: 25px;
         margin-bottom: 5px;
     }
-    p, pre{
+    pre{
         margin: 0;        
     }
     figure{
