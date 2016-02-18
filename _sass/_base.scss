@@ -139,6 +139,12 @@ code {
     border: 1px solid $grey-color-light;
     border-radius: 3px;
     background-color: #eef;
+    color: $text-color;
+    a &{
+        &:hover{
+            color: $brand-color;
+        }
+    }
 }
 
 code {

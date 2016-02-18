@@ -67,7 +67,7 @@ Here's a browser support table which I'll keep up-to-date:
 		<div class="grid-term-container">
 			<div class="grid-terms-term">
 				<h4>Grid Container</h4>
-				<span>The element on which <code class="highlighter-rouge">display: grid</code> is applied. It's the direct parent of all the grid items. In this example <code class="highlighter-rouge">container</code> is the grid container.</span>
+				<span>The element on which <code>display: grid</code> is applied. It's the direct parent of all the grid items. In this example <code>container</code> is the grid container.</span>
 			</div>
 			<div class="grid-terms-diagram">
 {% highlight html %}
@@ -82,7 +82,7 @@ Here's a browser support table which I'll keep up-to-date:
 		<div class="grid-term-container">
 			<div class="grid-terms-term">
 				<h4>Grid Item</h4>
-				<span>The children (e.g. <em>direct</em> descendants) of the grid container. Here the <code class="highlighter-rouge">item</code> elements are grid items, but <code class="highlighter-rouge">sub-item</code> isn't.</span>
+				<span>The children (e.g. <em>direct</em> descendants) of the grid container. Here the <code>item</code> elements are grid items, but <code>sub-item</code> isn't.</span>
 			</div>
 			<div class="grid-terms-diagram">
 {% highlight html %}
@@ -167,7 +167,7 @@ Here's a browser support table which I'll keep up-to-date:
 
 <section class="grid-terms">
 	<div class="grid-properties">
-		<h4>display</h4>
+		<h4 id="prop-display">display</h4>
 		<p>Defines the element as a grid container and establishes a new <em>grid formatting context</em> for its contents.</p>	
 		<h5>Values:</h5>
 		<ul class="values-list">
@@ -179,10 +179,10 @@ Here's a browser support table which I'll keep up-to-date:
   display: grid | inline-grid	
 }
 {% endhighlight %}			
-		<p>Note: <code class="highlighter-rouge">column</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">clear</code>, and <code class="highlighter-rouge">vertical-align</code> have no effect on a grid container.</p>			
+		<p>Note: <code>column</code>, <code>float</code>, <code>clear</code>, and <code>vertical-align</code> have no effect on a grid container.</p>			
 	</div>
 
-	<div class="grid-properties">
+	<div id="prop-grid-template-columns-rows" class="grid-properties">
 		<h4>grid-template-columns<br />grid-template-rows</h4>
 		<p>Defines the columns and rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line.</p>
 		<h5>Values:</h5>
@@ -230,12 +230,12 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>The second line will have two names: row1-end and row2-start.</p>
 	</div>	
 
-	<div class="grid-properties">
+	<div id="prop-grid-template-areas" class="grid-properties">
 		<h4>grid-template-areas</h4>
-		<p>Defines a grid template by referencing the names of the grid areas which are specified with the <code class="hilighting-rouge">grid-area</code> property. Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.</p>	
+		<p>Defines a grid template by referencing the names of the grid areas which are specified with the <a href="#prop-grid-area"><code>grid-area</code></a> property. Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.</p>	
 		<h5>Values:</h5>
 		<ul class="values-list">			
-			<li><b>&lt;grid-area-name&gt;</b> - the name of a grid area specified with <code class="hilighting-rouge">grid-area</code></li>
+			<li><b>&lt;grid-area-name&gt;</b> - the name of a grid area specified with <a href="#prop-grid-area"><code>grid-area</code></a></li>
 			<li><b>.</b> - a period signifies an empty grid cell</li>
 			<li><b>none</b> - no grid areas are defined</li>
 		</ul>
@@ -273,14 +273,14 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>Notice that you're not naming lines with this syntax, just areas. When you use this syntax the lines on either end of the areas are actually getting named automatically. If the name of your grid area is <b><em>foo</em></b>, the name of the area's starting row line and starting column line will be <b><em>foo</em>-start</b>, and the name of its last row line and last column line will be <b><em>foo</em>-end</b>. This means that some lines might have multiple names, such as the far left line in the above example, which will have three names: header-start, main-start, and footer-start.</p>
 	</div>
 
-	<div class="grid-properties">
+	<div id="prop-grid-template" class="grid-properties">
 		<h4>grid-template</h4>
-		<p>A shorthand for setting <code class="highlighting-rouge">grid-template-columns</code>, <code class="highlighting-rouge">grid-template-rows</code>, and <code class="highlighting-rouge">grid-template-areas</code> in a single declaration.</p>	
+		<p>A shorthand for setting <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, and <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> in a single declaration.</p>	
 		<h5>Values:</h5>
 		<ul class="values-list">			
 			<li><b>none</b> - sets all three properties to their initial values</li>
-			<li><b>subgrid</b> - sets <code class="highlighting-rouge">grid-template-rows</code> and <code class="highlighting-rouge">grid-template-columns</code> to "subgrid", and <code class="highlighting-rouge">grid-template-areas</code> to its initial value</li>
-			<li><b>&lt;grid-template-columns&gt; / &lt;grid-template-rows&gt;</b> - sets <code class="highlighting-rouge">grid-template-columns</code> and <code class="highlighting-rouge">grid-template-rows</code> to the specified values, respectively, and sets <code class="highlighting-rouge">grid-template-areas</code> to "none"</li>
+			<li><b>subgrid</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to "subgrid", and <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> to its initial value</li>
+			<li><b>&lt;grid-template-columns&gt; / &lt;grid-template-rows&gt;</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> to the specified values, respectively, and sets <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> to "none"</li>
 		</ul>
 {% highlight css %}
 .container{
@@ -305,9 +305,9 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 	</div>	
 
-	<div class="grid-properties">
+	<div id="prop-grid-auto-columns-rows" class="grid-properties">
 		<h4>grid-auto-columns<br />grid-auto-rows</h4>
-		<p>Specifies the size of any auto-generated grid tracks (aka <em>implicit grid tracks</em>). Implicit grid tracks get created when you explicitly position rows or columns (via <code class="highlighting-rouge">grid-template-rows</code>/<code class="highlighting-rouge">grid-template-columns</code>) that are out of range of the defined grid.</p>	
+		<p>Specifies the size of any auto-generated grid tracks (aka <em>implicit grid tracks</em>). Implicit grid tracks get created when you explicitly position rows or columns (via <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>/<a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>) that are out of range of the defined grid.</p>	
 		<h5>Values:</h5>
 		<ul class="values-list">			
 			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
@@ -328,7 +328,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 <img src="/assets/grid-auto.png" alt="Example of 2 x 2 grid">
 <p>This creates a 2 x 2 grid.</p>
-<p>But now imagine you use <code class="highlighting-rouge">grid-column</code> and <code class="highlighting-rouge">grid-row</code> to position your grid items like this:</p>		
+<p>But now imagine you use <a href="#prop-grid-column-row"><code>grid-column</code></a> and <a href="#prop-grid-column-row"><code>grid-row</code></a> to position your grid items like this:</p>		
 {% highlight css %}
 .item-a{
   grid-column: 1 / 2;
@@ -340,7 +340,7 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 	<img src="/assets/implicit-tracks.png" alt="Example of implicit tracks">
-	<p>We told .item-b to start on column line 5 and end at column line 6, <em>but we never defined a column line 5 or 6</em>. Because we referenced lines that don't exist, implicit tracks with widths of 0 are created to fill in the gaps. We can use <code class="highlighting-rouge">grid-auto-columns</code> and <code class="highlighting-rouge">grid-auto-rows</code> to specify the widths of these implicit tracks:</p>
+	<p>We told .item-b to start on column line 5 and end at column line 6, <em>but we never defined a column line 5 or 6</em>. Because we referenced lines that don't exist, implicit tracks with widths of 0 are created to fill in the gaps. We can use <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a> and <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a> to specify the widths of these implicit tracks:</p>
 {% highlight css %}
 .container{
   grid-auto-columns: 60px;
@@ -352,7 +352,7 @@ Here's a browser support table which I'll keep up-to-date:
 
 ###Properties for the Grid Items
 <section class="grid-terms">
-	<div class="grid-properties grid-properties-item">
+	<div id="prop-grid-column-row-start-end" class="grid-properties grid-properties-item">
 		<h4>grid-column-start<br />grid-column-end<br />grid-row-start<br />grid-row-end</h4>
 		<p>Determines a grid item's location within the grid by referring to specific grid lines. grid-column-start/grid-row-start is the line where the item begins, and grid-column-end/grid-row-end is the line where the item ends.</p>
 		<h5>Values:</h5>
@@ -392,7 +392,7 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>If no grid-column-end/grid-row-end is declared, the item will span 1 track by default.</p>
 	</div>
 
-<div class="grid-properties grid-properties-item">
+<div id="prop-grid-column-row" class="grid-properties grid-properties-item">
 		<h4>grid-column<br />grid-row</h4>
 		<p>Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row-end, respectively.</p>
 		<h5>Values:</h5>
@@ -416,9 +416,9 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>If no end line value is declared, the item will span 1 track by default.</p>
 	</div>	
 
-<div class="grid-properties grid-properties-item">
+<div id="prop-grid-area" class="grid-properties grid-properties-item">
 		<h4>grid-area</h4>
-		<p>Gives an item a name so that it cab be referenced by a template created with the <code class="highlighter-rouge">grid-template-areas</code> property. Alternatively, this property can be used as an even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.</p>
+		<p>Gives an item a name so that it cab be referenced by a template created with the <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> property. Alternatively, this property can be used as an even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
 			<li><b>&lt;name&gt;</b> - a name of your choosing</li>
