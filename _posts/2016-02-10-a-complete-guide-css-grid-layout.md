@@ -11,7 +11,7 @@ excerpt: "<p>CSS Grid Layout (aka “Grid”), is a two-dimensional grid-based l
 <div class="collapsible-section">
 	<p>There are two primary things that inspired me to create this guide. The first is Rachel Andrew's awesome book <a href="http://abookapart.com/products/get-ready-for-css-grid-layout">Get Ready for CSS Grid Layout.</a> It's a thorough, clear introduction to Grid and is the basis of this entire article. I <em>highly</em> encourage you to buy it and read it.</p>
 
-	<p>My other big inspiration is Chris Coyier's <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>, which has been my go-to resource for everything flexbox. It's helped a ton of people, evident by the fact that it's the top result when you Google "flexbox." You'll notice many similarities between his post and mine, because why not steal from the best?</p>
+	<p>My other big inspiration is Chris Coyier's <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>, which has been my go-to resource for everything flexbox. It's helped a ton of people, evident by the fact that it's the top result when you Google "flexbox." You'll notice many similarities between his post and mine, because why not steal from the best?</p>	
 </div>
 
 <h3 class="collapsible-control collapsed">Background and Browser Support</h3>
@@ -53,6 +53,8 @@ Here's a browser support table which I'll keep up-to-date:
 		<div class="browser-support-info no">Not Supported</div>
 	</div>
 </section>
+
+<p>Aside from Microsoft, browser manufacturers appear to be holding off on letting Grid loose in the wild until the spec is fully cooked. This is a good thing, as it means we won't have to worry about learning multiple syntaxes. My intention with this guide is to present the Grid concepts as they exist in the very latest version of the specification. So I won't be covering the out of date IE syntax, and I'll do my best to update this guide regularly as the spec matures.</p>
 
 <p>It's only a matter of time before you can use Grid in production. But the time to learn it is now.</p>
 </div>
