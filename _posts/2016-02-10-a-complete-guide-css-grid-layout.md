@@ -185,24 +185,24 @@ Here's a browser support table which I'll keep up-to-date:
 		<p>Defines the columns and rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
-			<li><b>&lt;number&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
-			<li><b>&lt;name&gt;</b> - an arbitrary name of your choosing</li>
+			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
+			<li><b>&lt;line-name&gt;</b> - an arbitrary name of your choosing</li>
 		</ul>
 {% highlight css %}
 .container{
-  grid-template-columns: <number> <number> <number> ...;
-  grid-template-rows: <number> <number> <number> ...;
+  grid-template-columns: <track-size> ...;
+  grid-template-rows: <track-size> ...;
 }
 {% endhighlight %}	
 		<p>When you leave an empty space between the track values, the grid lines are automatically assigned numerical names. But you can choose to explicitly name them:</p>	
 {% highlight css %}
 .container{
-  grid-template-columns: <name> <number> <name> <number> <name> <number> <name> ...;
-  grid-template-rows: <name> <number> <name> <number> <name> <number> <name> ...;
+  grid-template-columns: <line-name> <track-size> <line-name> <track-size> <line-name> ...;
+  grid-template-rows: <line-name> <track-size> <line-name> <track-size> <line-name> ...;
 }
 {% endhighlight %}	
 
-<p><b>Examples</b></p>
+<p>Examples:</p>
 <p>Letting the lines get named automatically:</p>
 {% highlight css %}
 .container{
@@ -243,7 +243,7 @@ Here's a browser support table which I'll keep up-to-date:
                        "..."
 }
 {% endhighlight %}			
-		<p><b>Example:</b></p>	
+		<p>Example:</p>	
 {% highlight css %}
 .item-a{
   grid-area: header;
@@ -301,7 +301,51 @@ Here's a browser support table which I'll keep up-to-date:
                        "footer footer footer"; 
 }
 {% endhighlight %}
-	</div>		
+	</div>	
+
+	<div class="grid-properties">
+		<h4>grid-auto-columns<br />grid-auto-rows</h4>
+		<p>Specifies the size of any auto-generated grid tracks (aka <em>implicit grid tracks</em>). Implicit grid tracks get created when you explicitly position rows or columns (via <code class="highlighting-rouge">grid-template-rows</code>/<code class="highlighting-rouge">grid-template-columns</code>) that are out of range of the defined grid.</p>	
+		<h5>Values:</h5>
+		<ul class="values-list">			
+			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
+		</ul>
+{% highlight css %}
+.container{
+  grid-auto-columns: <track-size> ...;
+  grid-auto-rows: <track-size> ...;
+}
+{% endhighlight %}
+		<p>Examples:</p>		
+		<p>To illustrate how implicit grid tracks get created, think about this:</p>
+{% highlight css %}
+.container{
+  grid-template-columns: 60px 60px;
+  grid-template-rows: 90px 90px
+}
+{% endhighlight %}
+<img src="/assets/grid-auto.png" alt="Example of 2 x 2 grid">
+<p>This creates a 2 x 2 grid.</p>
+<p>But now imagine you use <code class="highlighting-rouge">grid-column</code> and <code class="highlighting-rouge">grid-row</code> to position your grid items like this:</p>		
+{% highlight css %}
+.item-a{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.item-b{
+  grid-column: 5 / 6;
+  grid-row: 2 / 3;
+}
+{% endhighlight %}
+	<img src="/assets/implicit-tracks.png" alt="Example of implicit tracks">
+	<p>We told .item-b to start on column line 5 and end at column line 6, <em>but we never defined a column line 5 or 6</em>. Because we referenced lines that don't exist, implicit tracks with widths of 0 are created to fill in the gaps. We can use <code class="highlighting-rouge">grid-auto-columns</code> and <code class="highlighting-rouge">grid-auto-rows</code> to specify the widths of these implicit tracks:</p>
+{% highlight css %}
+.container{
+  grid-auto-columns: 60px;
+}
+{% endhighlight %}	
+	<img src="/assets/implicit-tracks-with-widths.png" alt="Example of implicit tracks">
+	</div>
 </section>
 
 ###Properties for the Grid Items
@@ -324,7 +368,7 @@ Here's a browser support table which I'll keep up-to-date:
   grid-row-end: <number> | <name> | span <number> | span <name> | auto
 }
 {% endhighlight %}	
-		<p><b>Examples</b></p>
+		<p>Examples:</p>
 {% highlight css %}
 .item-a{
   grid-column-start: 2;
@@ -359,7 +403,7 @@ Here's a browser support table which I'll keep up-to-date:
   grid-row: <start-line> / <end-line> | <start-line> / span <value>;
 }
 {% endhighlight %}	
-		<p><b>Example</b></p>
+		<p>Example:</p>
 {% highlight css %}
 .item-c{
   grid-column: 3 / span 2;
@@ -383,7 +427,7 @@ Here's a browser support table which I'll keep up-to-date:
   grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
 }
 {% endhighlight %}	
-		<p><b>Examples</b></p>
+		<p>Examples:</p>
 		<p>As a way to assign a name to the item:</p>
 {% highlight css %}
 .item-d{
