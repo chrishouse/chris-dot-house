@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A Complete Guide to CSS Grid Layout"
-date:   2016-02-10 09:03:54 -0600
+date:   2016-02-10
 author: Chris House
 excerpt: "<p>CSS Grid Layout (aka “Grid”), is a two-dimensional grid-based layout system that aims to do nothing less than completely change the way we design grid-based user interfaces. CSS has always been used to lay out our web pages, but it’s never done a very good job of it. First we used tables, then floats, positioning and inline-block, but all of these methods were essentially hacks and left out a lot of important functionality (vertical centering, for instance). Flexbox helped out, but it’s intended for simpler one-dimensional layouts, not complex two-dimensional ones (Flexbox and Grid actually work very well together). Grid is the very first CSS module created specifically to solve the layout problems we’ve all been hacking our way around for as long as we’ve been making websites.</p>"
 ---
@@ -163,11 +163,41 @@ Here's a browser support table which I'll keep up-to-date:
 	</section>
 </div>
 
+
+<h3>Table of Contents</h3>
+<div class="props-table-of-contents-container">
+	<div class="props-table-of-contents-left">
+		<h4>Properties for the Grid Container</h4>
+		<ul>
+			<li><a href="#prop-display">display</a></li>
+			<li><a href="#prop-grid-template-columns-rows">grid-template-columns</a></li>
+			<li><a href="#prop-grid-template-columns-rows">grid-template-rows</a></li>
+			<li><a href="#prop-grid-template-areas">grid-template-areas</a></li>
+			<li><a href="#prop-grid-template">grid-template</a></li>
+			<li><a href="#prop-grid-auto-columns-rows">grid-auto-columns</a></li>
+			<li><a href="#prop-grid-auto-columns-rows">grid-auto-rows</a></li>
+		</ul>
+	</div>
+	<div class="props-table-of-contents-right">
+		<h4>Properties for the Grid Items</h4>
+		<ul>
+			<li><a href="#prop-grid-column-row-start-end">grid-column-start</a></li>
+			<li><a href="#prop-grid-column-row-start-end">grid-column-end</a></li>
+			<li><a href="#prop-grid-column-row-start-end">grid-row-start</a></li>
+			<li><a href="#prop-grid-column-row-start-end">grid-row-end</a></li>
+			<li><a href="#prop-grid-column-row">grid-column</a></li>
+			<li><a href="#prop-grid-column-row">grid-row</a></li>
+			<li><a href="#prop-grid-area">grid-area</a></li>
+		</ul>
+	</div>
+</div>	
+
+
 ###Properties for the Grid Container
 
 <section class="grid-terms">
-	<div class="grid-properties">
-		<h4 id="prop-display">display</h4>
+	<div id="prop-display" class="grid-properties">
+		<h4>display</h4>
 		<p>Defines the element as a grid container and establishes a new <em>grid formatting context</em> for its contents.</p>	
 		<h5>Values:</h5>
 		<ul class="values-list">
@@ -180,7 +210,8 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}			
 		<p>Note: <code>column</code>, <code>float</code>, <code>clear</code>, and <code>vertical-align</code> have no effect on a grid container.</p>			
-	</div>
+		<a class="top-link" href="#top">[top]</a>		
+	</div>	
 
 	<div id="prop-grid-template-columns-rows" class="grid-properties">
 		<h4>grid-template-columns<br />grid-template-rows</h4>
@@ -228,6 +259,7 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}	
 	<p>The second line will have two names: row1-end and row2-start.</p>
+	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 
 	<div id="prop-grid-template-areas" class="grid-properties">
@@ -271,6 +303,7 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>Each row in your declaration needs to have the same number of cells.</p>
 	<p>You can use any number of adjacent periods to declare a single empty cell. As long as the periods have no spaces between them they represent a single cell.</p>
 	<p>Notice that you're not naming lines with this syntax, just areas. When you use this syntax the lines on either end of the areas are actually getting named automatically. If the name of your grid area is <b><em>foo</em></b>, the name of the area's starting row line and starting column line will be <b><em>foo</em>-start</b>, and the name of its last row line and last column line will be <b><em>foo</em>-end</b>. This means that some lines might have multiple names, such as the far left line in the above example, which will have three names: header-start, main-start, and footer-start.</p>
+	<a class="top-link" href="#top">[top]</a>	
 	</div>
 
 	<div id="prop-grid-template" class="grid-properties">
@@ -303,6 +336,7 @@ Here's a browser support table which I'll keep up-to-date:
                        "footer footer footer"; 
 }
 {% endhighlight %}
+	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 
 	<div id="prop-grid-auto-columns-rows" class="grid-properties">
@@ -347,6 +381,7 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}	
 	<img src="/assets/implicit-tracks-with-widths.png" alt="Example of implicit tracks">
+	<a class="top-link" href="#top">[top]</a>	
 	</div>
 </section>
 
@@ -390,6 +425,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 	<img src="/assets/grid-start-end-b.png" alt="Example of grid-row/column-start/end">
 	<p>If no grid-column-end/grid-row-end is declared, the item will span 1 track by default.</p>
+	<a class="top-link" href="#top">[top]</a>	
 	</div>
 
 <div id="prop-grid-column-row" class="grid-properties grid-properties-item">
@@ -414,6 +450,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 	<img src="/assets/grid-start-end-c.png" alt="Example of grid-column/grid-row">
 	<p>If no end line value is declared, the item will span 1 track by default.</p>
+	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 
 <div id="prop-grid-area" class="grid-properties grid-properties-item">
@@ -443,5 +480,6 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 	<img src="/assets/grid-start-end-d.png" alt="Example of grid-area">
+	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 </section>	

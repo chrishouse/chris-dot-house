@@ -567,6 +567,7 @@
 }
 
 .grid-properties{
+    position: relative;
     padding: 25px;
     background-color: lighten($accent-color, 43%);
     border: solid 1px lighten($accent-color, 20%);
@@ -601,4 +602,55 @@
 .values-list{
     margin: 0 0 25px 0;
     list-style-type: none;
+}
+
+.props-table-of-contents{
+    margin-left: 25px;
+    h4{
+        margin-bottom: 0;
+    }
+    ul{
+        list-style-type: none;
+        margin-left: 15px;
+        li a{
+            font-family: $secondary-font-family;
+        }
+    }
+}
+
+.props-table-of-contents-container{
+    display: flex;
+    ul{
+        list-style-type: none;
+        font-family: $secondary-font-family;
+        margin: 0 0 0 15px;
+    }
+}
+
+.props-table-of-contents-left, .props-table-of-contents-right{
+    padding: 15px;
+    border-radius: 4px;  
+    flex: 1;
+}
+
+.props-table-of-contents-left{
+    background-color: #fffadb;
+    border: solid 1px #ffe966;
+}
+
+.props-table-of-contents-right{
+    margin-left: 25px;
+    background-color: #eaf2fc;
+    border: solid 1px #bdd7f6;
+}
+
+.top-link{
+    position: absolute;
+    right: 5px;
+    bottom: -25px;
+    color: lighten($grey-color-light, 25%) !important;
+    font-size: 15px;   
+    &:hover{
+        color: $grey-color-light !important;
+    } 
 }
