@@ -360,8 +360,7 @@ Here's a browser support table which I'll keep up-to-date:
   grid-auto-columns: <track-size> ...;
   grid-auto-rows: <track-size> ...;
 }
-{% endhighlight %}
-		<p>Examples:</p>		
+{% endhighlight %}	
 		<p>To illustrate how implicit grid tracks get created, think about this:</p>
 {% highlight css %}
 .container{
@@ -398,7 +397,7 @@ Here's a browser support table which I'll keep up-to-date:
 <section class="grid-terms">
 	<div id="prop-grid-column-row-start-end" class="grid-properties grid-properties-item">
 		<h4>grid-column-start<br />grid-column-end<br />grid-row-start<br />grid-row-end</h4>
-		<p>Determines a grid item's location within the grid by referring to specific grid lines. grid-column-start/grid-row-start is the line where the item begins, and grid-column-end/grid-row-end is the line where the item ends.</p>
+		<p>Determines a grid item's location within the grid by referring to specific grid lines. <code>grid-column-start</code>/<code>grid-row-start</code> is the line where the item begins, and <code>grid-column-end</code>/<code>grid-row-end</code> is the line where the item ends.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
 			<li><b>&lt;line&gt;</b> - can be a number to refer to a numbered grid line, or a name to refer to a named grid line</li>
@@ -433,14 +432,14 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 	<img src="/assets/grid-start-end-b.png" alt="Example of grid-row/column-start/end">
-	<p>If no grid-column-end/grid-row-end is declared, the item will span 1 track by default.</p>
+	<p>If no <code>grid-column-end</code>/<code>grid-row-end</code> is declared, the item will span 1 track by default.</p>
 	<p>Items can overlap each other. You can use <code>z-index</code> to control their stacking order.</p>
 	<a class="top-link" href="#top">[top]</a>	
 	</div>
 
 <div id="prop-grid-column-row" class="grid-properties grid-properties-item">
 		<h4>grid-column<br />grid-row</h4>
-		<p>Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row-end, respectively.</p>
+		<p>Shorthand for <a href="#prop-grid-column-row-start-end"><code>grid-column-start</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-column-end</code></a>, and <a href="#prop-grid-column-row-start-end"><code>grid-row-start</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-row-end</code></a>, respectively.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
 			<li><b>&lt;start-line&gt; / &lt;end-line&gt;</b> - each one accepts all the same values as the longhand version, including span</li>
@@ -465,7 +464,7 @@ Here's a browser support table which I'll keep up-to-date:
 
 <div id="prop-grid-area" class="grid-properties grid-properties-item">
 		<h4>grid-area</h4>
-		<p>Gives an item a name so that it cab be referenced by a template created with the <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> property. Alternatively, this property can be used as an even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.</p>
+		<p>Gives an item a name so that it cab be referenced by a template created with the <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> property. Alternatively, this property can be used as an even shorter shorthand for <a href="#prop-grid-column-row-start-end"><code>grid-row-start</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-column-start</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-row-end</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-column-end</code></a>.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
 			<li><b>&lt;name&gt;</b> - a name of your choosing</li>
@@ -483,7 +482,7 @@ Here's a browser support table which I'll keep up-to-date:
   grid-area: header
 }
 {% endhighlight %}
-		<p>As the short-shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end:</p>
+		<p>As the short-shorthand for <a href="#prop-grid-column-row-start-end"><code>grid-row-start</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-column-start</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-row-end</code></a> + <a href="#prop-grid-column-row-start-end"><code>grid-column-end</code></a>:</p>
 {% highlight css %}
 .item-d{
   grid-area: 1 / col4-start / last-line / 6
