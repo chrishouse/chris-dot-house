@@ -220,23 +220,17 @@ Here's a browser support table which I'll keep up-to-date:
 		<ul class="values-list">
 			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
 			<li><b>&lt;line-name&gt;</b> - an arbitrary name of your choosing</li>
+			<li><b>subgrid</b> - if your grid container is itself a grid item (i.e. nested grids), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.</li>
 		</ul>
 {% highlight css %}
 .container{
-  grid-template-columns: <track-size> ...;
-  grid-template-rows: <track-size> ...;
-}
-{% endhighlight %}	
-		<p>When you leave an empty space between the track values, the grid lines are automatically assigned numerical names. But you can choose to explicitly name them:</p>	
-{% highlight css %}
-.container{
-  grid-template-columns: <line-name> <track-size> <line-name> <track-size> <line-name> ...;
-  grid-template-rows: <line-name> <track-size> <line-name> <track-size> <line-name> ...;
+  grid-template-columns: <track-size> ... | <line-name> <track-size> ... | subgrid;
+  grid-template-rows: <track-size> ... | <line-name> <track-size> ... | subgrid;
 }
 {% endhighlight %}	
 
 <p>Examples:</p>
-<p>Letting the lines get named automatically:</p>
+<p>When you leave an empty space between the track values, the grid lines are automatically assigned numerical names:</p>
 {% highlight css %}
 .container{
   grid-template-columns: 40px 50px auto 50px 40px;
@@ -244,7 +238,7 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 <img src="/assets/grid-numbers.png" alt="Grid with auto named lines">
-<p>Explicitly naming the lines. Note the bracket syntax for the line names:</p>
+<p>But you can choose to explicitly name the lines. Note the bracket syntax for the line names:</p>
 {% highlight css %}
 .container{
   grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
@@ -252,13 +246,28 @@ Here's a browser support table which I'll keep up-to-date:
 }
 {% endhighlight %}
 <img src="/assets/grid-names.png" alt="Grid with user named lines">
-	<p>Note that a line can have more than one name. For example:</p>
+	<p>Note that a line can have more than one name. For example, here the second line will have two names: row1-end and row2-start:</p>
 {% highlight css %}
 .container{
   grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];
 }
+{% endhighlight %}
+
+	<p>If your definition contains repeating parts, you can use the <code>repeat()</code> notation to streamline things:</p>	
+{% highlight css %}
+.container{
+  grid-template-columns: repeat(3, 20px [col-start]) 5%;
+}
 {% endhighlight %}	
-	<p>The second line will have two names: row1-end and row2-start.</p>
+
+<p>Which is equivalent to this:</p>
+
+{% highlight css %}
+.container{
+  grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;
+}
+{% endhighlight %}	
+
 	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 
@@ -425,6 +434,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 	<img src="/assets/grid-start-end-b.png" alt="Example of grid-row/column-start/end">
 	<p>If no grid-column-end/grid-row-end is declared, the item will span 1 track by default.</p>
+	<p>Items can overlap each other. You can use <code>z-index</code> to control their stacking order.</p>
 	<a class="top-link" href="#top">[top]</a>	
 	</div>
 
