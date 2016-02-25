@@ -9,17 +9,19 @@ excerpt: "<p>CSS Grid Layout (aka “Grid”), is a two-dimensional grid-based l
 <h3 class="collapsible-control collapsed">Introduction</h3>
 
 <div class="collapsible-section">
-	<p>There are two primary things that inspired me to create this guide. The first is Rachel Andrew's awesome book <a href="http://abookapart.com/products/get-ready-for-css-grid-layout">Get Ready for CSS Grid Layout.</a> It's a thorough, clear introduction to Grid and is the basis of this entire article. I <em>highly</em> encourage you to buy it and read it.</p>
-
-	<p>My other big inspiration is Chris Coyier's <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>, which has been my go-to resource for everything flexbox. It's helped a ton of people, evident by the fact that it's the top result when you Google "flexbox." You'll notice many similarities between his post and mine, because why not steal from the best?</p>	
-</div>
-
-<h3 class="collapsible-control collapsed">Background and Browser Support</h3>
-
-<div class="collapsible-section">
 	<p>CSS Grid Layout (aka "Grid"), is a two-dimensional grid-based layout system that aims to do nothing less than completely change the way we design grid-based user interfaces. CSS has always been used to lay out our web pages, but it's never done a very good job of it. First we used tables, then floats, positioning and inline-block, but all of these methods were essentially hacks and left out a lot of important functionality (vertical centering, for instance). Flexbox helped out, but it's intended for simpler one-dimensional layouts, not complex two-dimensional ones (Flexbox and Grid actually work very well together). Grid is the very first CSS module created specifically to solve the layout problems we've all been hacking our way around for as long as we've been making websites.</p>
 
-	<p>An important thing to understand about Grid is that it's not ready to be used in production yet. It's currently a <a href="https://www.w3.org/TR/css-grid-1/">W3C Working Draft</a> and isn't supported correctly in any browsers yet by default. Internet Explorer 10 and 11 support it, but it's an old implementation with an outdated syntax. In order to experiment with Grid today, your best bet is to use Chrome, Opera or Firefox with special flags enabled. In Chrome, navigate to <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags</a> and enable "experimental web platform features". That method also works in Opera (<a href="opera://flags/#enable-experimental-web-platform-features">opera://flags</a>). In Firefox, enable the <b>layout.css.grid.enabled</b> flag.</p>
+	<p>There are two primary things that inspired me to create this guide. The first is Rachel Andrew's awesome book <a href="http://abookapart.com/products/get-ready-for-css-grid-layout">Get Ready for CSS Grid Layout.</a> It's a thorough, clear introduction to Grid and is the basis of this entire article. I <em>highly</em> encourage you to buy it and read it. My other big inspiration is Chris Coyier's <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>, which has been my go-to resource for everything flexbox. It's helped a ton of people, evident by the fact that it's the top result when you Google "flexbox." You'll notice many similarities between his post and mine, because why not steal from the best?</p>	
+
+	<p>My intention with this guide is to present the Grid concepts as they exist in the very latest version of the specification. So I won't be covering the out of date IE syntax, and I'll do my best to update this guide regularly as the spec matures.</p>
+</div>
+
+<h3 id="basics" class="collapsible-control collapsed">Basics and Browser Support</h3>
+
+<div class="collapsible-section">
+	<p>Getting started with Grid is easy. You just define a container element as a grid with <a href="#prop-display"><code>display: grid</code></a>, set the column and row sizes with <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, and then place its child elements into the grid with <a href="#prop-grid-column-row"><code>grid-column</code></a> and <a href="#prop-grid-column-row"><code>grid-row</code></a>. Similarly to flexbox, the source order of the grid items doesn't matter. Your CSS can place them in any order, which makes it super easy to rearrange your grid with media queries. Imagine defining the layout of your entire page, and then completely rearranging it to accommodate a different screen width all with only a couple lines of CSS. Grid is one of the most powerful CSS modules ever introduced.</p>
+
+	<p><strong>An important thing to understand about Grid is that it's not ready to be used in production yet</strong>. It's currently a <a href="https://www.w3.org/TR/css-grid-1/">W3C Working Draft</a> and isn't supported correctly in any browsers yet by default. Internet Explorer 10 and 11 support it, but it's an old implementation with an outdated syntax. In order to experiment with Grid today, your best bet is to use Chrome, Opera or Firefox with special flags enabled. In Chrome, navigate to <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags</a> and enable "experimental web platform features". That method also works in Opera (<a href="opera://flags/#enable-experimental-web-platform-features">opera://flags</a>). In Firefox, enable the layout.css.grid.enabled flag.</p>
 
 Here's a browser support table which I'll keep up-to-date:
 
@@ -54,7 +56,7 @@ Here's a browser support table which I'll keep up-to-date:
 	</div>
 </section>
 
-<p>Aside from Microsoft, browser manufacturers appear to be holding off on letting Grid loose in the wild until the spec is fully cooked. This is a good thing, as it means we won't have to worry about learning multiple syntaxes. My intention with this guide is to present the Grid concepts as they exist in the very latest version of the specification. So I won't be covering the out of date IE syntax, and I'll do my best to update this guide regularly as the spec matures.</p>
+<p>Aside from Microsoft, browser manufacturers appear to be holding off on letting Grid loose in the wild until the spec is fully cooked. This is a good thing, as it means we won't have to worry about learning multiple syntaxes.</p>
 
 <p>It's only a matter of time before you can use Grid in production. But the time to learn it is now.</p>
 </div>
@@ -164,8 +166,8 @@ Here's a browser support table which I'll keep up-to-date:
 </div>
 
 
-<h3>Table of Contents</h3>
-<div class="props-table-of-contents-container">
+<h3 class="collapsible-control expanded">Grid Properties Table of Contents</h3>
+<div class="props-table-of-contents-container collapsible-section">
 	<div class="props-table-of-contents-left">
 		<h4>Properties for the Grid Container</h4>
 		<ul>
@@ -193,9 +195,9 @@ Here's a browser support table which I'll keep up-to-date:
 </div>	
 
 
-###Properties for the Grid Container
+<h3 class="collapsible-control expanded">Properties for the Grid Container</h3>
 
-<section class="grid-terms">
+<section class="grid-terms collapsible-section">
 	<div id="prop-display" class="grid-properties">
 		<h4>display</h4>
 		<p>Defines the element as a grid container and establishes a new <em>grid formatting context</em> for its contents.</p>	
@@ -393,8 +395,9 @@ Here's a browser support table which I'll keep up-to-date:
 	</div>
 </section>
 
-###Properties for the Grid Items
-<section class="grid-terms">
+<h3 class="collapsible-control expanded">Properties for the Grid Items</h3>
+
+<section class="grid-terms collapsible-section">
 	<div id="prop-grid-column-row-start-end" class="grid-properties grid-properties-item">
 		<h4>grid-column-start<br />grid-column-end<br />grid-row-start<br />grid-row-end</h4>
 		<p>Determines a grid item's location within the grid by referring to specific grid lines. <code>grid-column-start</code>/<code>grid-row-start</code> is the line where the item begins, and <code>grid-column-end</code>/<code>grid-row-end</code> is the line where the item ends.</p>
@@ -492,3 +495,10 @@ Here's a browser support table which I'll keep up-to-date:
 	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 </section>	
+
+
+
+<h3 class="collapsible-control expanded">Demonstrations</h3>
+<section class="grid-terms collapsible-section">
+	<p>Note that in order to view these demos you'll need to be using a Grid-enabled browser. See the <a href="#basics">Basics and Browser Support</a> section for more information.</p>
+</section>
