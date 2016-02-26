@@ -3,6 +3,7 @@ layout: post
 title:  "One Week with Jekyll"
 date:   2016-02-26
 author: Chris House
+comments: true
 excerpt_separator: <!-- excerpt-end -->
 ---
 
