@@ -638,6 +638,9 @@ pre {
   .top-link:hover {
     color: #8f8f8f !important; }
 
+#disqus_thread {
+  margin-top: 100px; }
+
 /**
  * Syntax highlighting styles
  */
