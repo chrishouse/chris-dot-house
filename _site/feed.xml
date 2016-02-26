@@ -6,9 +6,511 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Feb 2016 12:30:38 -0600</pubDate>
-    <lastBuildDate>Fri, 26 Feb 2016 12:30:38 -0600</lastBuildDate>
+    <pubDate>Fri, 26 Feb 2016 12:54:11 -0600</pubDate>
+    <lastBuildDate>Fri, 26 Feb 2016 12:54:11 -0600</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>A Complete Guide to CSS Grid Layout</title>
+        <description>&lt;h3 class=&quot;collapsible-control collapsed&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;div class=&quot;collapsible-section&quot;&gt;
+	&lt;p&gt;CSS Grid Layout (aka &quot;Grid&quot;), is a two-dimensional grid-based layout system that aims to do nothing less than completely change the way we design grid-based user interfaces. CSS has always been used to lay out our web pages, but it&#39;s never done a very good job of it. First we used tables, then floats, positioning and inline-block, but all of these methods were essentially hacks and left out a lot of important functionality (vertical centering, for instance). Flexbox helped out, but it&#39;s intended for simpler one-dimensional layouts, not complex two-dimensional ones (Flexbox and Grid actually work very well together). Grid is the very first CSS module created specifically to solve the layout problems we&#39;ve all been hacking our way around for as long as we&#39;ve been making websites.&lt;/p&gt;
+
+	&lt;p&gt;There are two primary things that inspired me to create this guide. The first is Rachel Andrew&#39;s awesome book &lt;a href=&quot;http://abookapart.com/products/get-ready-for-css-grid-layout&quot;&gt;Get Ready for CSS Grid Layout.&lt;/a&gt; It&#39;s a thorough, clear introduction to Grid and is the basis of this entire article. I &lt;em&gt;highly&lt;/em&gt; encourage you to buy it and read it. My other big inspiration is Chris Coyier&#39;s &lt;a href=&quot;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&quot;&gt;A Complete Guide to Flexbox&lt;/a&gt;, which has been my go-to resource for everything flexbox. It&#39;s helped a ton of people, evident by the fact that it&#39;s the top result when you Google &quot;flexbox.&quot; You&#39;ll notice many similarities between his post and mine, because why not steal from the best?&lt;/p&gt;	
+
+	&lt;p&gt;My intention with this guide is to present the Grid concepts as they exist in the very latest version of the specification. So I won&#39;t be covering the out of date IE syntax, and I&#39;ll do my best to update this guide regularly as the spec matures.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;basics&quot; class=&quot;collapsible-control collapsed&quot;&gt;Basics and Browser Support&lt;/h3&gt;
+
+&lt;div class=&quot;collapsible-section&quot;&gt;
+	&lt;p&gt;Getting started with Grid is easy. You just define a container element as a grid with &lt;a href=&quot;#prop-display&quot;&gt;&lt;code&gt;display: grid&lt;/code&gt;&lt;/a&gt;, set the column and row sizes with &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-columns&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-rows&lt;/code&gt;&lt;/a&gt;, and then place its child elements into the grid with &lt;a href=&quot;#prop-grid-column-row&quot;&gt;&lt;code&gt;grid-column&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;#prop-grid-column-row&quot;&gt;&lt;code&gt;grid-row&lt;/code&gt;&lt;/a&gt;. Similarly to flexbox, the source order of the grid items doesn&#39;t matter. Your CSS can place them in any order, which makes it super easy to rearrange your grid with media queries. Imagine defining the layout of your entire page, and then completely rearranging it to accommodate a different screen width all with only a couple lines of CSS. Grid is one of the most powerful CSS modules ever introduced.&lt;/p&gt;
+
+	&lt;p&gt;&lt;strong&gt;An important thing to understand about Grid is that it&#39;s not ready to be used in production yet&lt;/strong&gt;. It&#39;s currently a &lt;a href=&quot;https://www.w3.org/TR/css-grid-1/&quot;&gt;W3C Working Draft&lt;/a&gt; and isn&#39;t supported correctly in any browsers yet by default. Internet Explorer 10 and 11 support it, but it&#39;s an old implementation with an outdated syntax. In order to experiment with Grid today, your best bet is to use Chrome, Opera or Firefox with special flags enabled. In Chrome, navigate to &lt;a href=&quot;chrome://flags/#enable-experimental-web-platform-features&quot;&gt;chrome://flags&lt;/a&gt; and enable &quot;experimental web platform features&quot;. That method also works in Opera (&lt;a href=&quot;opera://flags/#enable-experimental-web-platform-features&quot;&gt;opera://flags&lt;/a&gt;). In Firefox, enable the layout.css.grid.enabled flag.&lt;/p&gt;
+
+Here&#39;s a browser support table which I&#39;ll keep up-to-date:
+
+&lt;section class=&quot;browser-support&quot;&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;Internet Explorer/Edge&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info partial&quot;&gt;10+ (Old Syntax)&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;Firefox&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info flagged&quot;&gt;40+ (Behind Flag)&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;Chrome&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info flagged&quot;&gt;29+ (Behind Flag)&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;Safari&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info no&quot;&gt;Not Supported&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;Opera&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info flagged&quot;&gt;28+ (Behind Flag)&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;iOS Safari&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info no&quot;&gt;Not Supported&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;browser-support-cell&quot;&gt;
+		&lt;div class=&quot;browser-support-name&quot;&gt;Chrome for Android&lt;/div&gt;
+		&lt;div class=&quot;browser-support-info no&quot;&gt;Not Supported&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;p&gt;Aside from Microsoft, browser manufacturers appear to be holding off on letting Grid loose in the wild until the spec is fully cooked. This is a good thing, as it means we won&#39;t have to worry about learning multiple syntaxes.&lt;/p&gt;
+
+&lt;p&gt;It&#39;s only a matter of time before you can use Grid in production. But the time to learn it is now.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 class=&quot;collapsible-control collapsed&quot;&gt;Important Terminology&lt;/h3&gt;
+&lt;div class=&quot;collapsible-section&quot;&gt;
+	&lt;p&gt;Before diving into the concepts of Grid it&#39;s important to understand the terminology. Since the terms involved here are all kinda conceptually similar, it&#39;s easy to confuse them with one another if you don&#39;t first memorize their meanings defined by the Grid specification. But don&#39;t worry, there aren&#39;t many of them.&lt;/p&gt;
+
+	&lt;section class=&quot;grid-terms&quot;&gt;
+		&lt;div class=&quot;grid-term-container&quot;&gt;
+			&lt;div class=&quot;grid-terms-term&quot;&gt;
+				&lt;h4&gt;Grid Container&lt;/h4&gt;
+				&lt;span&gt;The element on which &lt;code&gt;display: grid&lt;/code&gt; is applied. It&#39;s the direct parent of all the grid items. In this example &lt;code&gt;container&lt;/code&gt; is the grid container.&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;grid-terms-diagram&quot;&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item item-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item item-2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item item-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;grid-term-container&quot;&gt;
+			&lt;div class=&quot;grid-terms-term&quot;&gt;
+				&lt;h4&gt;Grid Item&lt;/h4&gt;
+				&lt;span&gt;The children (e.g. &lt;em&gt;direct&lt;/em&gt; descendants) of the grid container. Here the &lt;code&gt;item&lt;/code&gt; elements are grid items, but &lt;code&gt;sub-item&lt;/code&gt; isn&#39;t.&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;grid-terms-diagram&quot;&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sub-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+				
+			&lt;/div&gt;
+		&lt;/div&gt;		
+		&lt;div class=&quot;grid-term-container&quot;&gt;
+			&lt;div class=&quot;grid-terms-term&quot;&gt;
+				&lt;h4&gt;Grid Line&lt;/h4&gt;
+				&lt;p&gt;The dividing lines that make up the structure of the grid. They can be either vertical (&quot;column grid lines&quot;) or horizontal (&quot;row grid lines&quot;) and reside on either side of a row or column. Here the yellow line is an example of a column grid line.&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;grid-terms-diagram&quot;&gt;
+				&lt;div class=&quot;grid-diagram grid-diagram-line&quot;&gt;
+					&lt;div class=&quot;cell-1&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-2&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-3&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-4&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-5&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-6&quot;&gt;&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;grid-term-container&quot;&gt;
+			&lt;div class=&quot;grid-terms-term&quot;&gt;
+				&lt;h4&gt;Grid Track&lt;/h4&gt;
+				&lt;p&gt;The space between two adjacent grid lines. You can think of them like the columns or rows of the grid. Here&#39;s the grid track between the second and third row grid lines.&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;grid-terms-diagram&quot;&gt;
+				&lt;div class=&quot;grid-diagram grid-diagram-track&quot;&gt;
+					&lt;div class=&quot;cell-1&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-2&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-3&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-4&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-5&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-6&quot;&gt;&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;grid-term-container&quot;&gt;
+			&lt;div class=&quot;grid-terms-term&quot;&gt;
+				&lt;h4&gt;Grid Cell&lt;/h4&gt;
+				&lt;p&gt;The space between two adjacent row and two adjacent column grid lines. It&#39;s a single &quot;unit&quot; of the grid. Here&#39;s the grid cell between row grid lines 1 and 2, and column grid lines 2 and 3.&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;grid-terms-diagram&quot;&gt;
+				&lt;div class=&quot;grid-diagram grid-diagram-cell&quot;&gt;
+					&lt;div class=&quot;cell-1&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-2&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-3&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-4&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-5&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-6&quot;&gt;&lt;/div&gt;
+				&lt;/div&gt;				
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;grid-term-container&quot;&gt;
+			&lt;div class=&quot;grid-terms-term&quot;&gt;
+				&lt;h4&gt;Grid Area&lt;/h4&gt;
+				&lt;p&gt;The total space surrounded by four grid lines. A grid area may be comprised of any number of grid cells. Here&#39;s the grid area between row grid lines 1 and 3, and column grid lines 1 and 3.&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;grid-terms-diagram&quot;&gt;
+				&lt;div class=&quot;grid-diagram grid-diagram-area&quot;&gt;
+					&lt;div class=&quot;cell-1&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-2&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-3&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-4&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-5&quot;&gt;&lt;/div&gt;
+					&lt;div class=&quot;cell-6&quot;&gt;&lt;/div&gt;
+				&lt;/div&gt;				
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;h3 class=&quot;collapsible-control expanded&quot;&gt;Grid Properties Table of Contents&lt;/h3&gt;
+&lt;div class=&quot;props-table-of-contents-container collapsible-section&quot;&gt;
+	&lt;div class=&quot;props-table-of-contents-left&quot;&gt;
+		&lt;h4&gt;Properties for the Grid Container&lt;/h4&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-display&quot;&gt;display&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;grid-template-columns&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;grid-template-rows&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-template-areas&quot;&gt;grid-template-areas&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-template&quot;&gt;grid-template&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-auto-columns-rows&quot;&gt;grid-auto-columns&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-auto-columns-rows&quot;&gt;grid-auto-rows&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;props-table-of-contents-right&quot;&gt;
+		&lt;h4&gt;Properties for the Grid Items&lt;/h4&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;grid-column-start&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;grid-column-end&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;grid-row-start&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;grid-row-end&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-column-row&quot;&gt;grid-column&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-column-row&quot;&gt;grid-row&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#prop-grid-area&quot;&gt;grid-area&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 class=&quot;collapsible-control expanded&quot;&gt;Properties for the Grid Container&lt;/h3&gt;
+
+&lt;section class=&quot;grid-terms collapsible-section&quot;&gt;
+	&lt;div id=&quot;prop-display&quot; class=&quot;grid-properties&quot;&gt;
+		&lt;h4&gt;display&lt;/h4&gt;
+		&lt;p&gt;Defines the element as a grid container and establishes a new &lt;em&gt;grid formatting context&lt;/em&gt; for its contents.&lt;/p&gt;	
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;
+			&lt;li&gt;&lt;b&gt;grid&lt;/b&gt; - generates a block-level grid&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;inline-grid&lt;/b&gt; - generates an inline-level grid&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline-grid&lt;/span&gt;	
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+			
+		&lt;p&gt;Note: &lt;code&gt;column&lt;/code&gt;, &lt;code&gt;float&lt;/code&gt;, &lt;code&gt;clear&lt;/code&gt;, and &lt;code&gt;vertical-align&lt;/code&gt; have no effect on a grid container.&lt;/p&gt;			
+		&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;		
+	&lt;/div&gt;	
+
+	&lt;div id=&quot;prop-grid-template-columns-rows&quot; class=&quot;grid-properties&quot;&gt;
+		&lt;h4&gt;grid-template-columns&lt;br /&gt;grid-template-rows&lt;/h4&gt;
+		&lt;p&gt;Defines the columns and rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line.&lt;/p&gt;
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;track-size&amp;gt;&lt;/b&gt; - can be a length, a percentage, or a fraction of the free space in the grid (using the &lt;b&gt;fr&lt;/b&gt; unit)&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;line-name&amp;gt;&lt;/b&gt; - an arbitrary name of your choosing&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;subgrid&lt;/b&gt; - if your grid container is itself a grid item (i.e. nested grids), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track-size&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line-name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track-size&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subgrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track-size&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line-name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track-size&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subgrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;p&gt;When you leave an empty space between the track values, the grid lines are automatically assigned numerical names:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25%&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;img src=&quot;/assets/grid-numbers.png&quot; alt=&quot;Grid with auto named lines&quot; /&gt;
+&lt;p&gt;But you can choose to explicitly name the lines. Note the bracket syntax for the line names:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col4-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;five&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;third-line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last-line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;img src=&quot;/assets/grid-names.png&quot; alt=&quot;Grid with user named lines&quot; /&gt;
+	&lt;p&gt;Note that a line can have more than one name. For example, here the second line will have two names: row1-end and row2-start:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-end&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row2-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row2-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+	&lt;p&gt;If your definition contains repeating parts, you can use the &lt;code&gt;repeat()&lt;/code&gt; notation to streamline things:&lt;/p&gt;	
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repeat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+
+&lt;p&gt;Which is equivalent to this:&lt;/p&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;	
+
+	&lt;div id=&quot;prop-grid-template-areas&quot; class=&quot;grid-properties&quot;&gt;
+		&lt;h4&gt;grid-template-areas&lt;/h4&gt;
+		&lt;p&gt;Defines a grid template by referencing the names of the grid areas which are specified with the &lt;a href=&quot;#prop-grid-area&quot;&gt;&lt;code&gt;grid-area&lt;/code&gt;&lt;/a&gt; property. Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.&lt;/p&gt;	
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;			
+			&lt;li&gt;&lt;b&gt;&amp;lt;grid-area-name&amp;gt;&lt;/b&gt; - the name of a grid area specified with &lt;a href=&quot;#prop-grid-area&quot;&gt;&lt;code&gt;grid-area&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;.&lt;/b&gt; - a period signifies an empty grid cell&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;none&lt;/b&gt; - no grid areas are defined&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-areas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;&amp;lt;grid-area-name&amp;gt; | . | none | ...&quot;&lt;/span&gt;
+                       &lt;span class=&quot;s1&quot;&gt;&quot;...&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+			
+		&lt;p&gt;Example:&lt;/p&gt;	
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.item-b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.item-c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.item-d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-areas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;header header header header&quot;&lt;/span&gt;
+                       &lt;span class=&quot;s1&quot;&gt;&quot;main main . sidebar&quot;&lt;/span&gt;
+                       &lt;span class=&quot;s1&quot;&gt;&quot;footer footer footer footer&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+	&lt;p&gt;That&#39;ll create a grid that&#39;s four columns wide by three rows tall. The entire top row will be comprised of the &lt;b&gt;header&lt;/b&gt; area. The middle row will be comprised of two &lt;b&gt;main&lt;/b&gt; areas, one empty cell, and one &lt;b&gt;sidebar&lt;/b&gt; area. The last row is all &lt;b&gt;footer&lt;/b&gt;.&lt;/p&gt;
+	&lt;img src=&quot;/assets/grid-template-areas.png&quot; alt=&quot;Example of grid-template-areas&quot; /&gt;
+	&lt;p&gt;Each row in your declaration needs to have the same number of cells.&lt;/p&gt;
+	&lt;p&gt;You can use any number of adjacent periods to declare a single empty cell. As long as the periods have no spaces between them they represent a single cell.&lt;/p&gt;
+	&lt;p&gt;Notice that you&#39;re not naming lines with this syntax, just areas. When you use this syntax the lines on either end of the areas are actually getting named automatically. If the name of your grid area is &lt;b&gt;&lt;em&gt;foo&lt;/em&gt;&lt;/b&gt;, the name of the area&#39;s starting row line and starting column line will be &lt;b&gt;&lt;em&gt;foo&lt;/em&gt;-start&lt;/b&gt;, and the name of its last row line and last column line will be &lt;b&gt;&lt;em&gt;foo&lt;/em&gt;-end&lt;/b&gt;. This means that some lines might have multiple names, such as the far left line in the above example, which will have three names: header-start, main-start, and footer-start.&lt;/p&gt;
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;
+
+	&lt;div id=&quot;prop-grid-template&quot; class=&quot;grid-properties&quot;&gt;
+		&lt;h4&gt;grid-template&lt;/h4&gt;
+		&lt;p&gt;A shorthand for setting &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-columns&lt;/code&gt;&lt;/a&gt;, &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-rows&lt;/code&gt;&lt;/a&gt;, and &lt;a href=&quot;#prop-grid-template-areas&quot;&gt;&lt;code&gt;grid-template-areas&lt;/code&gt;&lt;/a&gt; in a single declaration.&lt;/p&gt;	
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;			
+			&lt;li&gt;&lt;b&gt;none&lt;/b&gt; - sets all three properties to their initial values&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;subgrid&lt;/b&gt; - sets &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-rows&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-columns&lt;/code&gt;&lt;/a&gt; to &quot;subgrid&quot;, and &lt;a href=&quot;#prop-grid-template-areas&quot;&gt;&lt;code&gt;grid-template-areas&lt;/code&gt;&lt;/a&gt; to its initial value&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;grid-template-columns&amp;gt; / &amp;lt;grid-template-rows&amp;gt;&lt;/b&gt; - sets &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-columns&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-rows&lt;/code&gt;&lt;/a&gt; to the specified values, respectively, and sets &lt;a href=&quot;#prop-grid-template-areas&quot;&gt;&lt;code&gt;grid-template-areas&lt;/code&gt;&lt;/a&gt; to &quot;none&quot;&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subgrid&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+		
+		&lt;p&gt;It also accepts a more complex but quite handy syntax for specifying all three. Here&#39;s an example:&lt;/p&gt;	
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25px&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;header header header&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row2-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;footer footer footer&quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row2-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+&lt;p&gt;That&#39;s equivalent to this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row1-end&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row2-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;25px&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row2-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-areas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;header header header&quot;&lt;/span&gt;
+                       &lt;span class=&quot;s1&quot;&gt;&quot;footer footer footer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;	
+
+	&lt;div id=&quot;prop-grid-auto-columns-rows&quot; class=&quot;grid-properties&quot;&gt;
+		&lt;h4&gt;grid-auto-columns&lt;br /&gt;grid-auto-rows&lt;/h4&gt;
+		&lt;p&gt;Specifies the size of any auto-generated grid tracks (aka &lt;em&gt;implicit grid tracks&lt;/em&gt;). Implicit grid tracks get created when you explicitly position rows or columns (via &lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-rows&lt;/code&gt;&lt;/a&gt;/&lt;a href=&quot;#prop-grid-template-columns-rows&quot;&gt;&lt;code&gt;grid-template-columns&lt;/code&gt;&lt;/a&gt;) that are out of range of the defined grid.&lt;/p&gt;	
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;			
+			&lt;li&gt;&lt;b&gt;&amp;lt;track-size&amp;gt;&lt;/b&gt; - can be a length, a percentage, or a fraction of the free space in the grid (using the &lt;b&gt;fr&lt;/b&gt; unit)&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-auto-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track-size&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-auto-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track-size&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+		&lt;p&gt;To illustrate how implicit grid tracks get created, think about this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;90px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;90px&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;img src=&quot;/assets/grid-auto.png&quot; alt=&quot;Example of 2 x 2 grid&quot; /&gt;
+&lt;p&gt;This creates a 2 x 2 grid.&lt;/p&gt;
+&lt;p&gt;But now imagine you use &lt;a href=&quot;#prop-grid-column-row&quot;&gt;&lt;code&gt;grid-column&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;#prop-grid-column-row&quot;&gt;&lt;code&gt;grid-row&lt;/code&gt;&lt;/a&gt; to position your grid items like this:&lt;/p&gt;		
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.item-b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+	&lt;img src=&quot;/assets/implicit-tracks.png&quot; alt=&quot;Example of implicit tracks&quot; /&gt;
+	&lt;p&gt;We told .item-b to start on column line 5 and end at column line 6, &lt;em&gt;but we never defined a column line 5 or 6&lt;/em&gt;. Because we referenced lines that don&#39;t exist, implicit tracks with widths of 0 are created to fill in the gaps. We can use &lt;a href=&quot;#prop-grid-auto-columns-rows&quot;&gt;&lt;code&gt;grid-auto-columns&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;#prop-grid-auto-columns-rows&quot;&gt;&lt;code&gt;grid-auto-rows&lt;/code&gt;&lt;/a&gt; to specify the widths of these implicit tracks:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-auto-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+	&lt;img src=&quot;/assets/implicit-tracks-with-widths.png&quot; alt=&quot;Example of implicit tracks&quot; /&gt;
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;h3 class=&quot;collapsible-control expanded&quot;&gt;Properties for the Grid Items&lt;/h3&gt;
+
+&lt;section class=&quot;grid-terms collapsible-section&quot;&gt;
+	&lt;div id=&quot;prop-grid-column-row-start-end&quot; class=&quot;grid-properties grid-properties-item&quot;&gt;
+		&lt;h4&gt;grid-column-start&lt;br /&gt;grid-column-end&lt;br /&gt;grid-row-start&lt;br /&gt;grid-row-end&lt;/h4&gt;
+		&lt;p&gt;Determines a grid item&#39;s location within the grid by referring to specific grid lines. &lt;code&gt;grid-column-start&lt;/code&gt;/&lt;code&gt;grid-row-start&lt;/code&gt; is the line where the item begins, and &lt;code&gt;grid-column-end&lt;/code&gt;/&lt;code&gt;grid-row-end&lt;/code&gt; is the line where the item ends.&lt;/p&gt;
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;line&amp;gt;&lt;/b&gt; - can be a number to refer to a numbered grid line, or a name to refer to a named grid line&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;span &amp;lt;number&amp;gt;&lt;/b&gt; - the item will span across the provided number of grid tracks&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;span &amp;lt;name&amp;gt;&lt;/b&gt; - the item will span across until it hits the next line with the provided name&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;auto&lt;/b&gt; - indicates auto-placement, an automatic span, or a default span of one&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-column-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;grid-column-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;grid-row-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;grid-row-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+		&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-column-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-column-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;five&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-row-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row1-start&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;grid-row-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+	&lt;img src=&quot;/assets/grid-start-end-a.png&quot; alt=&quot;Example of grid-row/column-start/end&quot; /&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-column-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-column-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;col4-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-row-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;grid-row-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+	&lt;img src=&quot;/assets/grid-start-end-b.png&quot; alt=&quot;Example of grid-row/column-start/end&quot; /&gt;
+	&lt;p&gt;If no &lt;code&gt;grid-column-end&lt;/code&gt;/&lt;code&gt;grid-row-end&lt;/code&gt; is declared, the item will span 1 track by default.&lt;/p&gt;
+	&lt;p&gt;Items can overlap each other. You can use &lt;code&gt;z-index&lt;/code&gt; to control their stacking order.&lt;/p&gt;
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;
+
+&lt;div id=&quot;prop-grid-column-row&quot; class=&quot;grid-properties grid-properties-item&quot;&gt;
+		&lt;h4&gt;grid-column&lt;br /&gt;grid-row&lt;/h4&gt;
+		&lt;p&gt;Shorthand for &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-column-start&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-column-end&lt;/code&gt;&lt;/a&gt;, and &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-row-start&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-row-end&lt;/code&gt;&lt;/a&gt;, respectively.&lt;/p&gt;
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;start-line&amp;gt; / &amp;lt;end-line&amp;gt;&lt;/b&gt; - each one accepts all the same values as the longhand version, including span&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start-line&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end-line&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start-line&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start-line&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end-line&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start-line&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+		&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;grid-column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;grid&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;third-line&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+	&lt;img src=&quot;/assets/grid-start-end-c.png&quot; alt=&quot;Example of grid-column/grid-row&quot; /&gt;
+	&lt;p&gt;If no end line value is declared, the item will span 1 track by default.&lt;/p&gt;
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;	
+
+&lt;div id=&quot;prop-grid-area&quot; class=&quot;grid-properties grid-properties-item&quot;&gt;
+		&lt;h4&gt;grid-area&lt;/h4&gt;
+		&lt;p&gt;Gives an item a name so that it cab be referenced by a template created with the &lt;a href=&quot;#prop-grid-template-areas&quot;&gt;&lt;code&gt;grid-template-areas&lt;/code&gt;&lt;/a&gt; property. Alternatively, this property can be used as an even shorter shorthand for &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-row-start&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-column-start&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-row-end&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-column-end&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+		&lt;h5&gt;Values:&lt;/h5&gt;
+		&lt;ul class=&quot;values-list&quot;&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;name&amp;gt;&lt;/b&gt; - a name of your choosing&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;&amp;lt;row-start&amp;gt; / &amp;lt;column-start&amp;gt; / &amp;lt;row-end&amp;gt; / &amp;lt;column-end&amp;gt;&lt;/b&gt; - can be numbers or named lines&lt;/li&gt;
+		&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row-start&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;column-start&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row-end&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;column-end&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	
+		&lt;p&gt;Examples:&lt;/p&gt;
+		&lt;p&gt;As a way to assign a name to the item:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+		&lt;p&gt;As the short-shorthand for &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-row-start&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-column-start&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-row-end&lt;/code&gt;&lt;/a&gt; + &lt;a href=&quot;#prop-grid-column-row-start-end&quot;&gt;&lt;code&gt;grid-column-end&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.item-d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;grid-area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;col4-start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last-line&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+	&lt;img src=&quot;/assets/grid-start-end-d.png&quot; alt=&quot;Example of grid-area&quot; /&gt;
+	&lt;a class=&quot;top-link&quot; href=&quot;#top&quot;&gt;[top]&lt;/a&gt;	
+	&lt;/div&gt;	
+&lt;/section&gt;
+
+&lt;h3 class=&quot;collapsible-control expanded&quot;&gt;Demonstrations&lt;/h3&gt;
+&lt;section class=&quot;grid-terms collapsible-section&quot;&gt;
+	&lt;p&gt;Note that in order to view these demos you&#39;ll need to be using a Grid-enabled browser. See the &lt;a href=&quot;#basics&quot;&gt;Basics and Browser Support&lt;/a&gt; section for more information.&lt;/p&gt;
+&lt;/section&gt;
+</description>
+        <pubDate>Fri, 26 Feb 2016 00:00:00 -0600</pubDate>
+        <link>http://yourdomain.com/2016/02/26/a-complete-guide-css-grid-layout.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/02/26/a-complete-guide-css-grid-layout.html</guid>
+        
+        
+      </item>
     
   </channel>
 </rss>
