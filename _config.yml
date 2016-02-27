@@ -19,4 +19,4 @@ github_username:  chrishouse
 markdown: kramdown
 kramdown:
     auto_ids: false
-permalink: /blog/:title/
+permalink: pretty
