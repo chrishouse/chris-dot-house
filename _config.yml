@@ -19,4 +19,8 @@ github_username:  chrishouse
 markdown: kramdown
 kramdown:
     auto_ids: false
+<<<<<<< HEAD
 permalink: /blog/:title/
+=======
+permalink: /blog/:title/
+>>>>>>> 3619c6f30e79f60bdeabdeb80b89cd3eb3f3e389
