@@ -408,16 +408,15 @@ pre {
   .collapsible-control.collapsed:before {
     display: inline-block;
     text-align: center;
-    content: '\25B6';
+    content: '+';
     color: #2076e1;
     width: 18px;
     vertical-align: middle; }
   .collapsible-control.expanded:before {
     display: inline-block;
     text-align: center;
-    content: '\25BC';
+    content: '-';
     color: #2076e1;
-    font-size: 18px;
     width: 18px;
     vertical-align: middle; }
   .collapsible-control:hover {

@@ -18,4 +18,5 @@ github_username:  chrishouse
 # Build settings
 markdown: kramdown
 kramdown:
-    auto_ids: false  
+    auto_ids: false
+permalink: /blog/:title/
