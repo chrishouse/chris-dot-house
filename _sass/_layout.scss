@@ -355,9 +355,8 @@
         &:before{
             display: inline-block;
             text-align: center;
-            content: '\25B6';
+            content: '+';
             color: $brand-color;
-            //font-size: 14px;
             width: 18px;
             vertical-align: middle;
         }
@@ -366,9 +365,8 @@
        &:before{
         display: inline-block;
         text-align: center;
-            content: '\25BC';
+            content: '-';
             color: $brand-color;
-            font-size: 18px;
             width: 18px;
             vertical-align: middle;
         } 

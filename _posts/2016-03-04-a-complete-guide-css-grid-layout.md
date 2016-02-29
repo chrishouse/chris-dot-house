@@ -178,6 +178,14 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-grid-template">grid-template</a></li>
 			<li><a href="#prop-grid-auto-columns-rows">grid-auto-columns</a></li>
 			<li><a href="#prop-grid-auto-columns-rows">grid-auto-rows</a></li>
+			<li><a href="#prop-grid-auto-flow">grid-auto-flow</a></li>
+			<li><a href="#prop-grid-column-row-gap">grid-column-gap</a></li>
+			<li><a href="#prop-grid-column-row-gap">grid-row-gap</a></li>
+			<li><a href="#prop-grid-gap">grid-gap</a></li>
+			<li><a href="#prop-justify-items">justify-items</a></li>
+			<li><a href="#prop-align-items">align-items</a></li>
+			<li><a href="#prop-justify-content">justify-content</a></li>
+			<li><a href="#prop-align-content">align-content</a></li>
 		</ul>
 	</div>
 	<div class="props-table-of-contents-right">
@@ -190,6 +198,8 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-grid-column-row">grid-column</a></li>
 			<li><a href="#prop-grid-column-row">grid-row</a></li>
 			<li><a href="#prop-grid-area">grid-area</a></li>
+			<li><a href="#prop-justify-self">justify-self</a></li>
+			<li><a href="#prop-align-self">align-self</a></li>			
 		</ul>
 	</div>
 </div>	
@@ -350,6 +360,281 @@ Here's a browser support table which I'll keep up-to-date:
 	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 
+
+	<div id="prop-grid-column-row-gap" class="grid-properties">
+	<h4>grid-column-gap<br />grid-row-gap</h4>
+	<p>Specifies the size of the grid lines. You can think of it like setting the width of the gutters between the columns/rows.</p>
+	<h5>Values:</h5>
+		<ul class="values-list">			
+			<li><b>&lt;line-size&gt;</b> - a length value</li>
+		</ul>
+{% highlight css %}
+.container{
+  grid-column-gap: <line-size>;
+  grid-row-gap: <line-size>;
+}
+{% endhighlight %}
+	<p>Example:</p>
+{% highlight css %}
+.container{
+  grid-template: 100px 50px 100px / 80px auto 80px	
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-column-row-gap.png" alt="Example of grid-column-gap and grid-row-gap">			
+
+	<a class="top-link" href="#top">[top]</a>
+	</div>
+
+
+	<div id="prop-grid-gap" class="grid-properties">
+	<h4>grid-gap</h4>
+	<p>A shorthand for <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a> + <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a>.</p>
+	<h5>Values:</h5>
+		<ul class="values-list">			
+			<li><b>&lt;grid-column-gap&gt; &lt;grid-row-gap&gt;</b> - length values</li>
+		</ul>
+{% highlight css %}
+.container{
+  grid-gap: <grid-column-gap> <grid-row-gap>;
+}
+{% endhighlight %}
+	<p>Example:</p>
+{% highlight css %}
+.container{
+  grid-template: 100px 50px 100px / 80px auto 80px	
+  grid-gap: 10px 15px;
+}
+{% endhighlight %}	
+	<p>If no <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> is specified, it's set to the same value as <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a></p>		
+
+	<a class="top-link" href="#top">[top]</a>
+	</div>
+
+
+<div id="prop-justify-items" class="grid-properties">
+	<h4>justify-items</h4>
+	<p>Aligns the content inside a grid item along the <em>column</em> axis (as opposed to <a href="#prop-align-items"><code>align-items</code></a> which aligns along the <em>row</em> axis). This value applies to all grid items inside the container.</p>
+	<h5>Values:</h5>
+		<ul class="values-list">						
+			<li><b>start</b> - aligns the content to the left end of the grid area</li>
+			<li><b>end</b> - aligns the content to the right end of the grid area</li>
+			<li><b>center</b> - aligns the content in the center of the grid area</li>
+			<li><b>stretch</b> - fills the whole width of the grid area (this is the default)</li>
+		</ul>
+{% highlight css %}
+.container{
+  justify-items: start | end | center | stretch;
+}
+{% endhighlight %}
+	<p>Examples:</p>
+{% highlight css %}
+.container{
+  justify-items: start;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-items-start.png" alt="Example of justify-items set to start">
+{% highlight css %}
+.container{
+  justify-items: end;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-items-end.png" alt="Example of justify-items set to end">
+	{% highlight css %}
+.container{
+  justify-items: center;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-items-center.png" alt="Example of justify-items set to center">
+{% highlight css %}
+.container{
+  justify-items: stretch;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-items-stretch.png" alt="Example of justify-items set to stretch">	
+	<p>This behavior can also be set on individual grid items via the <a href="#prop-justify-self"><code>justify-self</code></a> property.</p>		
+
+	<a class="top-link" href="#top">[top]</a>
+	</div>	
+
+
+	<div id="prop-align-items" class="grid-properties">
+	<h4>align-items</h4>
+	<p>Aligns the content inside a grid item along the <em>row</em> axis (as opposed to <a href="#prop-justify-items"><code>justify-items</code></a> which aligns along the <em>column</em> axis). This value applies to all grid items inside the container.</p>
+	<h5>Values:</h5>
+		<ul class="values-list">						
+			<li><b>start</b> - aligns the content to the top of the grid area</li>
+			<li><b>end</b> - aligns the content to the bottom of the grid area</li>
+			<li><b>center</b> - aligns the content in the center of the grid area</li>
+			<li><b>stretch</b> - fills the whole height of the grid area (this is the default)</li>
+		</ul>
+{% highlight css %}
+.container{
+  align-items: start | end | center | stretch;
+}
+{% endhighlight %}
+	<p>Examples:</p>
+{% highlight css %}
+.container{
+  align-items: start;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-items-start.png" alt="Example of align-items set to start">
+{% highlight css %}
+.container{
+  align-items: end;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-items-end.png" alt="Example of align-items set to end">
+	{% highlight css %}
+.container{
+  align-items: center;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-items-center.png" alt="Example of align-items set to center">
+{% highlight css %}
+.container{
+  align-items: stretch;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-items-stretch.png" alt="Example of align-items set to stretch">	
+	<p>This behavior can also be set on individual grid items via the <a href="#prop-align-self"><code>align-self</code></a> property.</p>		
+
+	<a class="top-link" href="#top">[top]</a>
+	</div>
+
+
+	<div id="prop-justify-content" class="grid-properties">
+		<h4>justify-content</h4>
+		<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like px. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the <em>column</em> axis (as opposed to <a href="#prop-align-content"><code>align-content</code></a> which aligns the grid along the <em>row</em> axis).</p>
+		<h5>Values:</h5>
+		<ul class="value-list">
+			<li><b>start</b> - aligns the grid to the left end of the grid container</li>
+			<li><b>end</b> - aligns the grid to the right end of the grid container</li>
+			<li><b>center</b> - aligns the grid in the center of the grid container</li>
+			<li><b>stretch</b> - resizes the grid items to allow the grid to fill the full width of the grid container</li>
+			<li><b>space-around</b> - places an even amount of space between each grid item, with half-sized spaces on the far ends</li>
+			<li><b>space-between</b> - places an even amount of space between each grid item, with no space at the far ends</li>
+			<li><b>space-evenly</b> - places an even amount of space between each grid item, including the far ends</li>
+		</ul>
+{% highlight css %}
+.container{
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;	
+}
+{% endhighlight %}	
+	<p>Examples:</p>
+{% highlight css %}
+.container{
+  justify-content: start;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-start.png" alt="Example of justify-content set to start">
+{% highlight css %}
+.container{
+  justify-content: end;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-end.png" alt="Example of justify-content set to end">
+{% highlight css %}
+.container{
+  justify-content: center;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-center.png" alt="Example of justify-content set to center">
+{% highlight css %}
+.container{
+  justify-content: stretch;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-stretch.png" alt="Example of justify-content set to stretch">
+{% highlight css %}
+.container{
+  justify-content: space-around;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-space-around.png" alt="Example of justify-content set to space-around">
+{% highlight css %}
+.container{
+  justify-content: space-between;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-space-between.png" alt="Example of justify-content set to space-between">
+{% highlight css %}
+.container{
+  justify-content: space-evenly;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-justify-content-space-evenly.png" alt="Example of justify-content set to space-evenly">
+	<a class="top-link" href="#top">[top]</a>								
+	</div>
+
+
+<div id="prop-align-content" class="grid-properties">
+		<h4>align-content</h4>
+		<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like px. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the <em>row</em> axis (as opposed to <a href="#prop-justify-content"><code>justify-content</code></a> which aligns the grid along the <em>column</em> axis).</p>
+		<h5>Values:</h5>
+		<ul class="value-list">
+			<li><b>start</b> - aligns the grid to the top of the grid container</li>
+			<li><b>end</b> - aligns the grid to the bottom of the grid container</li>
+			<li><b>center</b> - aligns the grid in the center of the grid container</li>
+			<li><b>stretch</b> - resizes the grid items to allow the grid to fill the full height of the grid container</li>
+			<li><b>space-around</b> - places an even amount of space between each grid item, with half-sized spaces on the far ends</li>
+			<li><b>space-between</b> - places an even amount of space between each grid item, with no space at the far ends</li>
+			<li><b>space-evenly</b> - places an even amount of space between each grid item, including the far ends</li>
+		</ul>
+{% highlight css %}
+.container{
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;	
+}
+{% endhighlight %}	
+	<p>Examples:</p>
+{% highlight css %}
+.container{
+  align-content: start;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-start.png" alt="Example of align-content set to start">
+{% highlight css %}
+.container{
+  align-content: end;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-end.png" alt="Example of align-content set to end">
+{% highlight css %}
+.container{
+  align-content: center;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-center.png" alt="Example of align-content set to center">
+{% highlight css %}
+.container{
+  align-content: stretch;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-stretch.png" alt="Example of align-content set to stretch">
+{% highlight css %}
+.container{
+  align-content: space-around;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-space-around.png" alt="Example of align-content set to space-around">
+{% highlight css %}
+.container{
+  align-content: space-between;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-space-between.png" alt="Example of align-content set to space-between">
+{% highlight css %}
+.container{
+  align-content: space-evenly;	
+}
+{% endhighlight %}		
+	<img src="/assets/grid-align-content-space-evenly.png" alt="Example of align-content set to space-evenly">
+	<a class="top-link" href="#top">[top]</a>								
+	</div>	
+
+
 	<div id="prop-grid-auto-columns-rows" class="grid-properties">
 		<h4>grid-auto-columns<br />grid-auto-rows</h4>
 		<p>Specifies the size of any auto-generated grid tracks (aka <em>implicit grid tracks</em>). Implicit grid tracks get created when you explicitly position rows or columns (via <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>/<a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>) that are out of range of the defined grid.</p>	
@@ -393,7 +678,70 @@ Here's a browser support table which I'll keep up-to-date:
 	<img src="/assets/implicit-tracks-with-widths.png" alt="Example of implicit tracks">
 	<a class="top-link" href="#top">[top]</a>	
 	</div>
+
+
+	<div id="prop-grid-auto-flow" class="grid-properties">
+		<h4>grid-auto-flow</h4>
+		<p>If you have grid items that you don't explicitly place on the grid, the <em>auto-placement algorithm</em> kicks in to automatically place the items. This property controls how the auto-placement algorithm works.</p>
+		<h5>Values:</h5>
+		<ul class="values-list">			
+			<li><b>row</b> - tells the auto-placement algorithm to fill in each row in turn, adding new rows as necessary</li>
+			<li><b>column</b> - tells the auto-placement algorithm to fill in each column in turn, adding new columns as necessary</li>
+			<li><b>dense</b> - tells the auto-placement algorithm to attempt to fill in holes earlier in the grid if smaller items come up later</li>
+		</ul>
+{% highlight css %}
+.container{
+  grid-auto-flow: row | column | row dense | column dense
+}
+{% endhighlight %}	
+		<p>Note that <b>dense</b> might cause your items to appear out of order.</p>
+		<p>Examples:</p>
+		<p>Consider this HTML:</p>
+{% highlight html %}
+<section class="container">
+    <div class="item-a">item-a</div>
+    <div class="item-b">item-b</div>
+    <div class="item-c">item-c</div>
+    <div class="item-d">item-d</div>
+    <div class="item-e">item-e</div>
 </section>
+{% endhighlight %}
+		<p>You define a grid with five columns and two rows, and set <code>grid-auto-flow</code> to <code>row</code> (which is also the default):</p>	
+{% highlight css %}
+.container{
+    display: grid;
+    grid-template-columns: 60px 60px 60px 60px 60px;
+    grid-template-rows: 30px 30px;
+    grid-auto-flow: row;
+}
+{% endhighlight %}
+		<p>When placing the items on the grid, you only specify spots for two of them:</p>
+{% highlight css %}
+.item-a{
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+.item-e{
+    grid-column: 5;
+    grid-row: 1 / 3;
+}
+{% endhighlight %}		
+		<p>Because we set <code>grid-auto-flow</code> to <code>row</code>, our grid will look like this. Notice how the three items we didn't place (<b>item-b</b>, <b>item-c</b> and <b>item-d</b>) flow across the available rows:</p>
+		<img src="/assets/grid-auto-flow-row.png" alt="Example of grid-auto-flow set to row">
+		<p>If we instead set <code>grid-auto-flow</code> to <code>column</code>, <b>item-b</b>, <b>item-c</b> and <b>item-d</b> flow down the columns:</p>
+{% highlight css %}
+.container{
+    display: grid;
+    grid-template-columns: 60px 60px 60px 60px 60px;
+    grid-template-rows: 30px 30px;
+    grid-auto-flow: column;
+}
+{% endhighlight %}	
+		<img src="/assets/grid-auto-flow-column.png" alt="Example of grid-auto-flow set to column">	
+		<a class="top-link" href="#top">[top]</a>	
+	</div>
+</section>
+
 
 <h3 class="collapsible-control expanded">Properties for the Grid Items</h3>
 
@@ -493,7 +841,100 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 	<img src="/assets/grid-start-end-d.png" alt="Example of grid-area">
 	<a class="top-link" href="#top">[top]</a>	
+	</div>
+
+
+<div id="prop-justify-self" class="grid-properties grid-properties-item">
+	<h4>justify-self</h4>
+	<p>Aligns the content inside a grid item along the <em>column</em> axis (as opposed to <a href="#prop-align-self"><code>align-self</code></a> which aligns along the <em>row</em> axis). This value applies to the content inside a single grid item.</p>
+	<h5>Values:</h5>
+		<ul class="values-list">						
+			<li><b>start</b> - aligns the content to the left end of the grid area</li>
+			<li><b>end</b> - aligns the content to the right end of the grid area</li>
+			<li><b>center</b> - aligns the content in the center of the grid area</li>
+			<li><b>stretch</b> - fills the whole width of the grid area (this is the default)</li>
+		</ul>
+{% highlight css %}
+.item{
+  justify-self: start | end | center | stretch;
+}
+{% endhighlight %}
+	<p>Examples:</p>
+{% highlight css %}
+.item-a{
+  justify-self: start;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-self-start.png" alt="Example of justify-self set to start">
+{% highlight css %}
+.item-a{
+  justify-self: end;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-self-end.png" alt="Example of justify-self set to end">
+	{% highlight css %}
+.item-a{
+  justify-self: center;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-self-center.png" alt="Example of justify-self set to center">
+{% highlight css %}
+.item-a{
+  justify-self: stretch;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-justify-self-stretch.png" alt="Example of justify-self set to stretch">	
+	<p>To set alignment for <em>all</em> the items in a grid, this behavior can also be set on the grid container via the <a href="#prop-justify-items"><code>justify-items</code></a> property.</p>		
+
+	<a class="top-link" href="#top">[top]</a>
 	</div>	
+
+
+<div id="prop-align-self" class="grid-properties grid-properties-item">
+	<h4>align-self</h4>
+	<p>Aligns the content inside a grid item along the <em>row</em> axis (as opposed to <a href="#prop-justify-self"><code>justify-self</code></a> which aligns along the <em>column</em> axis). This value applies to the content inside a single grid item.</p>
+	<h5>Values:</h5>
+		<ul class="values-list">						
+			<li><b>start</b> - aligns the content to the top of the grid area</li>
+			<li><b>end</b> - aligns the content to the bottom of the grid area</li>
+			<li><b>center</b> - aligns the content in the center of the grid area</li>
+			<li><b>stretch</b> - fills the whole height of the grid area (this is the default)</li>
+		</ul>
+{% highlight css %}
+.item{
+  align-self: start | end | center | stretch;
+}
+{% endhighlight %}
+	<p>Examples:</p>
+{% highlight css %}
+.item-a{
+  align-self: start;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-self-start.png" alt="Example of align-self set to start">
+{% highlight css %}
+.item-a{
+  align-self: end;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-self-end.png" alt="Example of align-self set to end">
+	{% highlight css %}
+.item-a{
+  align-self: center;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-self-center.png" alt="Example of align-self set to center">
+{% highlight css %}
+.item-a{
+  align-self: stretch;
+}
+{% endhighlight %}	
+	<img src="/assets/grid-align-self-stretch.png" alt="Example of align-self set to stretch">	
+	<p>To align <em>all</em> the items in a grid, this behavior can also be set on the grid container via the <a href="#prop-align-items"><code>align-items</code></a> property.</p>		
+
+	<a class="top-link" href="#top">[top]</a>
+	</div>
+
 </section>	
 
 
