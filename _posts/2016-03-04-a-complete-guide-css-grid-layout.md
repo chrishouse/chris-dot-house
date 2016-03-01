@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A Complete Guide to CSS Grid Layout"
-date:   2016-02-27
+date:   2016-03-04
 author: Chris House
 excerpt: "<p>CSS Grid Layout (aka “Grid”), is a two-dimensional grid-based layout system that aims to do nothing less than completely change the way we design grid-based user interfaces. CSS has always been used to lay out our web pages, but it’s never done a very good job of it. First we used tables, then floats, positioning and inline-block, but all of these methods were essentially hacks and left out a lot of important functionality (vertical centering, for instance). Flexbox helped out, but it’s intended for simpler one-dimensional layouts, not complex two-dimensional ones (Flexbox and Grid actually work very well together). Grid is the very first CSS module created specifically to solve the layout problems we’ve all been hacking our way around for as long as we’ve been making websites.</p>"
 ---
@@ -186,6 +186,7 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-align-items">align-items</a></li>
 			<li><a href="#prop-justify-content">justify-content</a></li>
 			<li><a href="#prop-align-content">align-content</a></li>
+			<li><a href="#prop-grid">grid</a></li>
 		</ul>
 	</div>
 	<div class="props-table-of-contents-right">
@@ -230,7 +231,7 @@ Here's a browser support table which I'll keep up-to-date:
 		<p>Defines the columns and rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">
-			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
+			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <a href="#fr-unit"><code>fr</code></a> unit)</li>
 			<li><b>&lt;line-name&gt;</b> - an arbitrary name of your choosing</li>
 			<li><b>subgrid</b> - if your grid container is itself a grid item (i.e. nested grids), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.</li>
 		</ul>
@@ -279,6 +280,18 @@ Here's a browser support table which I'll keep up-to-date:
   grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;
 }
 {% endhighlight %}	
+<p id="fr-unit">The <code>fr</code> unit allows you to set the size of a track as a fraction of the free space of the grid container. For example, this will set each item to one third the width of the grid container:</p>
+{% highlight css %}
+.container{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+{% endhighlight %}
+<p>The free space is calculated <em>after</em> any non-flexible items. In this example the total amount of free space available to the <code>fr</code> units doesn't include the 50px:</p>
+{% highlight css %}
+.container{
+  grid-template-columns: 1fr 50px 1fr 1fr;
+}
+{% endhighlight %}
 
 	<a class="top-link" href="#top">[top]</a>	
 	</div>	
@@ -357,6 +370,8 @@ Here's a browser support table which I'll keep up-to-date:
                        "footer footer footer"; 
 }
 {% endhighlight %}
+	<p>Since <code>grid-template</code> doesn't reset the <em>implicit</em> grid properties (<a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>), which is probably what you want to do in most cases, it's recommended to use the <a href="#prop-grid"><code>grid</code></a> property instead of <code>grid-template</code>.</p>
+
 	<a class="top-link" href="#top">[top]</a>	
 	</div>	
 
@@ -640,7 +655,7 @@ Here's a browser support table which I'll keep up-to-date:
 		<p>Specifies the size of any auto-generated grid tracks (aka <em>implicit grid tracks</em>). Implicit grid tracks get created when you explicitly position rows or columns (via <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>/<a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>) that are out of range of the defined grid.</p>	
 		<h5>Values:</h5>
 		<ul class="values-list">			
-			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <b>fr</b> unit)</li>
+			<li><b>&lt;track-size&gt;</b> - can be a length, a percentage, or a fraction of the free space in the grid (using the <a href="#fr-unit"><code>fr</code></a> unit)</li>
 		</ul>
 {% highlight css %}
 .container{
@@ -740,6 +755,56 @@ Here's a browser support table which I'll keep up-to-date:
 		<img src="/assets/grid-auto-flow-column.png" alt="Example of grid-auto-flow set to column">	
 		<a class="top-link" href="#top">[top]</a>	
 	</div>
+
+	<div id="prop-grid" class="grid-properties">
+		<h4>grid</h4>
+		<p>A shorthand for setting all of the following properties in a single declaration: <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>. It also sets <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a> and <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> to their initial values, even though they can't be explicitly set by this property.</p>
+		<h5>Values:</h5>
+		<ul class="values-list">			
+			<li><b>&lt;grid-template&gt;</b> - accepts all the same values as <a href="#prop-grid-template"><code>grid-template</code></a></li>
+			<li><b>&lt;grid-auto-flow&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a></li>
+			<li><b>&lt;grid-auto-columns&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a></li>
+			<li><b>&lt;grid-auto-rows&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a></li>
+		</ul>
+{% highlight css %}
+.container{
+    grid: <grid-template> <grid-auto-flow> <grid-auto-columns> <grid-auto-rows>;
+}
+{% endhighlight %}			
+		<p>Examples:</p>
+		<p>The following two code blocks are equivalent:</p>
+{% highlight css %}
+.container{
+    grid: row 1fr;
+}
+{% endhighlight %}	
+{% highlight css %}
+.container{
+    grid-template: none;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-auto-flow: row;
+}
+{% endhighlight %}
+		<p>And the following two code blocks are equivalent:</p>	
+{% highlight css %}
+.container{
+    grid: column 1fr / auto;
+}
+{% endhighlight %}
+{% highlight css %}
+.container{
+    grid-template: none;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: auto;
+    grid-auto-flow: column;
+}
+{% endhighlight %}	
+		<p>Since <code>grid</code> resets the <em>implicit</em> grid properties (<a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>), which is probably what you want to do in most cases, it's recommended to use <code>grid</code> instead of <a href="#prop-grid-template"><code>grid-template</code></a>.</p>							
+
+		<a class="top-link" href="#top">[top]</a>	
+	</div>
+
 </section>
 
 
@@ -935,11 +1000,4 @@ Here's a browser support table which I'll keep up-to-date:
 	<a class="top-link" href="#top">[top]</a>
 	</div>
 
-</section>	
-
-
-
-<h3 class="collapsible-control expanded">Demonstrations</h3>
-<section class="grid-terms collapsible-section">
-	<p>Note that in order to view these demos you'll need to be using a Grid-enabled browser. See the <a href="#basics">Basics and Browser Support</a> section for more information.</p>
 </section>
