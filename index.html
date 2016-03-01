@@ -1,0 +1,33 @@
+---
+layout: default
+title: Home
+---
+<div class="wrapper">
+  <div class="home">
+
+    <ul class="post-list">
+      {% for post in paginator.posts %}
+        <li>   
+          <span class="post-meta">{{ post.date | date: "%B %-dth, %Y" }}</span>   
+          <h2>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>          
+          {{ post.excerpt }}<a href="{{ post.url | prepend: site.baseurl }}" class="read-more-link">(more)</a>
+        </li>
+      {% endfor %}
+      <div class="pagination">
+        {% if paginator.previous_page %}
+          {% if paginator.previous_page == 1 %}
+            <p class="prev-link"><a href="{{site.baseurl}}/" class="previous"><< Newer Posts</a></p>
+          {% else %}
+            <p class="prev-link"><a href="{{site.baseurl}}/blog/page{{paginator.previous_page}}" class="previous"><< Newer Posts</a></p>
+          {% endif %}
+        {% endif %}
+        {% if paginator.next_page %}
+          <p class="next-link"><a href="{{site.baseurl}}/blog/page{{paginator.next_page}}" class="next">Older Posts >></a></p>
+        {% endif %}
+      </div>
+    </ul>
+
+  </div>
+</div>
