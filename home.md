@@ -2,7 +2,6 @@
 layout: default
 title: Home
 permalink: /
-order: 1
 ---
 <div class="wrapper">
   <div class="home">
