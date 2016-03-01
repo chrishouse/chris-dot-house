@@ -6,12 +6,15 @@ layout: default
   <header class="post-header">
   	<div class="wrapper">
 	    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-	    <p class="post-meta">{% if page.author %} by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="author-link" href="mailto:me@chris.house" itemprop="name">{{ page.author }}</a></span>{% endif %}<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-dth, %Y" }}</time></p>
+	    <p class="post-meta">{% if page.author %} by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="author-link" href="mailto:me@chris.house" itemprop="name">{{ page.author }}</a></span>{% endif %}<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time></p>
 	</div>
   </header>
 
   <div class="post-content article-body" itemprop="articleBody">
   	<div class="wrapper">
+      {% if page.updated %}
+      <p class="updated">Last updated on {{ page.updated | date: "%B %-d, %Y" }}</p>
+      {% endif %}
     	{{ content }}
 
       {% if page.comments %}
