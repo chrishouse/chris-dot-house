@@ -2,7 +2,6 @@
 layout: page
 title: Archive
 permalink: /archive/
-order: 3
 ---
 
 <div class="archive">
