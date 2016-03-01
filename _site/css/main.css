@@ -397,9 +397,6 @@ pre {
   float: left;
   margin: 0 13px 0 0; }
 
-.archive .post-list li {
-  margin-bottom: 10px; }
-
 .read-more-link {
   float: right; }
 
@@ -649,6 +646,13 @@ pre {
 
 .next-link {
   float: right; }
+
+.archive .post-list h1 {
+  margin-bottom: 0; }
+.archive .post-list ul {
+  list-style-type: none; }
+.archive .post-list li {
+  margin-bottom: 0; }
 
 /**
  * Syntax highlighting styles
