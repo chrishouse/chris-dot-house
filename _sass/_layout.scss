@@ -337,14 +337,6 @@
     margin: 0 13px 0 0;
 }
 
-.archive{
-    .post-list{
-        li{
-            margin-bottom: 10px;
-        }
-    }
-}
-
 .read-more-link{
     float: right;
 }
@@ -656,4 +648,18 @@
 
 #disqus_thread{
     margin-top: 100px;
+}
+
+.archive{
+    .post-list{
+        h1{
+            margin-bottom: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        li{
+            margin-bottom: 0;
+        }
+    }
 }
