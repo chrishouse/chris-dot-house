@@ -2,7 +2,6 @@
 layout: page
 title: About
 permalink: /about/
-order: 2
 ---
 
 ![Chris House, web designer and front-end developer](/assets/no-image.jpg){: .image-float-left}I'm Chris House, a web designer and front-end developer from Kansas City. I've been creating websites personally and professionally since 2011, and I've quickly developed quite a passion for it. In 2015 I ventured into the freelancing world with my company, [Caiman Web Design](http://caimanwebdesign.com). That experience has taught me an enormous amount about web development, business and working with clients.
