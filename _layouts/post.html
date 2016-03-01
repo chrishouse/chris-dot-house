@@ -12,6 +12,9 @@ layout: default
 
   <div class="post-content article-body" itemprop="articleBody">
   	<div class="wrapper">
+      {% if page.updated %}
+      <p class="updated">Last updated on {{ page.updated | date: "%B %-d, %Y" }}</p>
+      {% endif %}
     	{{ content }}
 
       {% if page.comments %}
