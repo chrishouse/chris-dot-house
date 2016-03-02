@@ -45,7 +45,7 @@ Here's how I want the final archive list to look:
 	</div>
 </div>
 
-First, here's the completed Liquid code:
+First let me show you the completed Liquid code:
 
 {% highlight markdown %}
 {% raw %}
@@ -131,7 +131,7 @@ In this new line, the `assign` command declares a new variable called `currentDa
 </section>
 {% endraw %}{% endhighlight %}
 
-What we're doing here is using an `if` statement to check if the value of `currentDate` is equal to the value of a variable called `myDate`, *which we haven't declared yet*. Since `myDate` hasn't been declared yet, we know that this statement will evaluate to *false*, at least the first time through the loop.
+What we're doing here is using an `if` statement to check if the value of `currentDate` is not equal to the value of a variable called `myDate`, *which we haven't declared yet*. Since `myDate` hasn't been declared yet, we know that this statement will evaluate to *true* and the code inside will get executed, at least the first time through the loop.
 
 {% highlight markdown %}
 {% raw %}
@@ -147,7 +147,7 @@ What we're doing here is using an `if` statement to check if the value of `curre
 </section>
 {% endraw %}{% endhighlight %}
 
-This new line uses the `unless` command along with `forloop.first` to basically say: "*Unless* this is the *first* time through this loop, do the following." Which is to print out a closing `</ul>` tag.
+This new line uses the `unless` command along with `forloop.first` to say: "*Unless* this is the *first* time through this loop, do the following." Which is to print out a closing `</ul>` tag.
 
 {% highlight markdown %}
 {% raw %}
