@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jekyll - Building a Simple Archive Page"
+title: "Building a Simple Archive Page with Jekyll"
 date: 2016-03-01
 author: Chris House
 comments: true
