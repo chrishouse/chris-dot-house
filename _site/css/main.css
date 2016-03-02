@@ -658,6 +658,12 @@ pre {
   font-style: italic;
   color: #8f8f8f; }
 
+.jekyll-archive-post {
+  border: solid 1px #ddd;
+  padding: 30px;
+  border-radius: 3px;
+  margin-bottom: 30px; }
+
 /**
  * Syntax highlighting styles
  */
