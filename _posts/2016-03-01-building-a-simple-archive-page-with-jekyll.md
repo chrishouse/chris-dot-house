@@ -4,7 +4,7 @@ title: "Building a Simple Archive Page with Jekyll"
 date: 2016-03-01
 author: Chris House
 comments: true
-tags: [jekyll]
+tags: [jekyll, static site generators]
 ---
 
 I recently decided to build an archive page for my [Jekyll](http://www.jekyllrb.com/) site. Nothing fancy, just a list of posts grouped by year. I turned to the official Jekyll documentation and was surprised to come up empty handed. My next stop was Google, which brought me to [this question](http://stackoverflow.com/questions/19086284/jekyll-liquid-templating-how-to-group-blog-posts-by-year/20777475) on Stackoverflow. User [Christian Specht](http://stackoverflow.com/users/6884/christian-specht) presented an answer so good I felt the need to share it.
@@ -27,7 +27,7 @@ permalink: /archive/
 
 Here's how I want the final archive list to look:
 
-<div class="archive jekyll-archive-post">
+<div class="archive content-highlighted">
 	<div class="post-list">
 		<h1>2016</h1>
 		<ul>

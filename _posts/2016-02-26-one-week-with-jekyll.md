@@ -5,6 +5,7 @@ date:   2016-02-26
 updated: 
 author: Chris House
 comments: true
+tags: [jekyll, static site generators]
 excerpt_separator: <!-- excerpt-end -->
 ---
 

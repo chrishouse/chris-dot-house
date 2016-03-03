@@ -1,0 +1,117 @@
+.post-header {
+    margin-bottom: 50px;
+    margin-top: -29px;
+    padding: 25px 0;
+    background-color: $grey-color;
+}
+
+.page-header{
+    margin-bottom: 50px;
+    margin-top: -29px;
+    background-color: $grey-color;
+}
+
+.post-title {
+    padding-top: 15px;
+    font-size: 36px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    font-family: $secondary-font-family;
+    color: white;
+
+    @include media-query($on-laptop) {
+        font-size: 36px;
+    }
+}
+
+.post-content {
+    margin-bottom: $spacing-unit;
+
+    h2 {
+        font-size: 32px;
+
+        @include media-query($on-laptop) {
+            font-size: 28px;
+        }
+    }
+
+    h3 {
+        font-size: 30px;
+        font-family: $base-font-family;
+        color: $grey-color;
+
+        @include media-query($on-laptop) {
+            font-size: 22px;
+        }
+    }
+
+    h4 {
+        font-size: 20px;
+
+        @include media-query($on-laptop) {
+            font-size: 18px;
+        }
+    }
+}
+
+.article-body{
+    h3{
+        margin-top: 50px;
+    }
+}
+
+.author-link{
+    color: $accent-color;
+    &:hover{
+        color: white;
+    }    
+}
+
+.collapsible-control{
+    margin-top: 25px !important;
+    &.collapsed{
+        &:before{
+            display: inline-block;
+            text-align: center;
+            content: '+';
+            color: $brand-color;
+            width: 18px;
+            vertical-align: middle;
+        }
+    }
+    &.expanded{
+       &:before{
+        display: inline-block;
+        text-align: center;
+            content: '-';
+            color: $brand-color;
+            width: 18px;
+            vertical-align: middle;
+        } 
+    }
+    &:hover{
+        cursor: pointer;
+        color: $brand-color;
+    }
+}
+
+.collapsible-section{
+    display: none;
+    margin-bottom: 50px;
+}
+
+#disqus_thread{
+    margin-top: 100px;
+}
+
+.updated{
+    font-style: italic;
+    color: $grey-color-light;
+}
+
+.content-highlighted{
+    border: solid 1px #ddd;
+    padding: 30px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}

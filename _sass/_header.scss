@@ -1,0 +1,126 @@
+.site-header {
+    // Positioning context for the mobile navigation icon
+    position: relative;
+    background-color: $brand-color;
+    border-bottom: solid 4px $accent-color;
+    background-image: url('/images/cubes.png');
+    background-repeat: repeat;
+}
+
+.site-title {
+    vertical-align: middle;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 80px;
+    margin-bottom: 0;
+    float: left;
+    font-family: $secondary-font-family;
+    &,
+    &:visited {
+        color: white;
+    }
+    &:after{
+        display: inline-block;
+        content: ' ';
+        width: 1px;
+        height: 25px;
+        background-color: $accent-color;
+        vertical-align: middle;
+        margin-bottom: 3px;
+        margin-left: 3px;
+        animation: pulse 1s infinite;
+    }
+    &:hover{
+        text-decoration: none;
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+.sub-header{
+    background-color: $grey-color;
+}
+
+.site-nav {
+    float: right;
+    line-height: 30px;
+
+    .menu-icon {
+        display: none;
+    }
+
+    .page-link {
+        color: white;
+        line-height: $base-line-height;
+        font-size: 15px;
+
+        // Gaps between nav items, but not on the last one
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        &:hover{
+            text-decoration: none;
+            color: $accent-color;
+        }
+    }    
+
+    @include media-query($on-palm) {
+        position: absolute;
+        top: 9px;
+        right: $spacing-unit / 2;
+        background-color: $grey-color;
+        border-radius: 5px;
+        text-align: right;
+
+        .menu-icon {
+            display: block;
+            float: right;
+            width: 36px;
+            height: 26px;
+            line-height: 0;
+            padding-top: 10px;
+            text-align: center;
+
+            > svg {
+                width: 18px;
+                height: 15px;
+
+                path {
+                    fill: white;
+                }
+            }
+        }
+
+        .trigger {
+            clear: both;
+            display: none;
+        }
+
+        &:hover .trigger {
+            display: block;
+            padding-bottom: 5px;
+        }
+
+        .page-link {
+            display: block;
+            padding: 5px 10px;
+            color: $accent-color;
+
+            &:not(:last-child) {
+                margin-right: 0;
+            }
+            margin-left: 20px;
+        }
+    }
+}
