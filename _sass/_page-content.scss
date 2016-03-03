@@ -1,0 +1,102 @@
+.page-content {
+    padding: $spacing-unit 0;
+}
+
+.page-heading {
+    font-size: 20px;
+}
+
+.post-list {
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+        margin-bottom: 50px;
+        overflow: hidden;
+    }
+
+    h2{
+        margin-bottom: 0;
+        .home &{
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.post-meta {
+    font-size: $small-font-size;
+    color: $grey-color-light;
+    overflow: hidden;
+    margin: 0;
+    time{
+        float: right;
+    }
+    .home &{
+        font-style: italic;
+    }
+}
+
+.post-link {
+    display: block;
+    font-family: $secondary-font-family;
+    font-size: 26px;
+    &,
+    &:visited{
+        color: $grey-color;
+    }
+    &:hover{
+        text-decoration: none;
+        color: $brand-color;
+    }
+}
+
+.home{
+    margin-top: 20px;
+}
+
+.read-more-link{
+    float: right;
+}
+
+.image-float-left{
+    float: left;
+    margin: 0 13px 0 0;
+}
+
+.top-link{
+    position: absolute;
+    right: 5px;
+    bottom: -25px;
+    color: lighten($grey-color-light, 25%) !important;
+    font-size: 15px;   
+    &:hover{
+        color: $grey-color-light !important;
+    } 
+}
+
+.pagination{
+    padding-top: 70px;
+    overflow: hidden;
+}
+
+.prev-link{
+    float: left;
+}
+
+.next-link{
+    float: right;
+}
+
+.archive{
+    .post-list{
+        h1{
+            margin-bottom: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        li{
+            margin-bottom: 0;
+        }
+    }
+}

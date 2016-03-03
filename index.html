@@ -12,7 +12,8 @@ title: Home
           <h2>
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>          
-          {{ post.excerpt }}<a href="{{ post.url | prepend: site.baseurl }}" class="read-more-link">(more)</a>
+          {{ post.excerpt }}
+          <a href="{{ post.url | prepend: site.baseurl }}" class="read-more-link">[Read more]</a>
         </li>
       {% endfor %}
       <div class="pagination">
