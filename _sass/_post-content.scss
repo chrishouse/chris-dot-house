@@ -65,6 +65,9 @@
     &:hover{
         color: white;
     }    
+    &:visited{
+      color: $accent-color;  
+    }
 }
 
 .collapsible-control{
