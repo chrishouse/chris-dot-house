@@ -555,6 +555,8 @@ pre {
   color: #ffdb00; }
   .author-link:hover {
     color: white; }
+  .author-link:visited {
+    color: #ffdb00; }
 
 .collapsible-control {
   margin-top: 25px !important; }
