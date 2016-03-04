@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![Chris House, web designer and front-end developer](/assets/no-image.jpg){: .image-float-left}I'm Chris House, a web designer and front-end developer from Kansas City. I've been creating websites personally and professionally since 2011, and I've quickly developed quite a passion for it. In 2015 I ventured into the freelancing world with my company, [Caiman Web Design](http://caimanwebdesign.com). That experience has taught me an enormous amount about web development, business and working with clients.
+![Chris House, web designer and front-end developer](/images/profile-pic.jpg){: .image-float-left}I'm Chris House, a web designer and front-end developer from Kansas City. I've been creating websites personally and professionally since 2011, and I've quickly developed quite a passion for it. In 2015 I ventured into the freelancing world with my company, [Caiman Web Design](http://caimanwebdesign.com). That experience has taught me an enormous amount about web development, business and working with clients.
 
 I'm excited about keeping up with new web technologies, and I'm addicted to learning new languages, tools and frameworks. My latest forays have included [React.js](https://facebook.github.io/react/), [Jekyll](https://jekyllrb.com/), and [CSS Grid Layout](https://www.w3.org/TR/css-grid-1/). I learn best by listening to others, so I'd be lost without all the brilliant minds whose blogs, books, conference talks and podcasts I digest regularly.
 
