@@ -322,7 +322,8 @@ pre {
     margin-left: 3px;
     animation: pulse 1s infinite; }
   .site-title:hover {
-    text-decoration: none; }
+    text-decoration: none;
+    color: white; }
 @keyframes pulse {
   0% {
     opacity: 0; }
