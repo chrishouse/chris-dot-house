@@ -104,7 +104,7 @@
 }
 
 #disqus_thread{
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .updated{
@@ -117,4 +117,39 @@
     padding: 30px;
     border-radius: 3px;
     margin-bottom: 30px;
+}
+
+.share-buttons{
+    list-style-type: none;
+    margin: 60px 0 0 0;
+    border-top: solid 2px #eaedee;
+    border-top: solid 2px rgba(0, 39, 59, .08);
+    padding: 16px 0;
+    li{
+        display: inline;
+    }
+}
+
+.share-button{
+    background-color: blue;
+    font-size: 14px;
+    padding: 5px;
+    color: white !important;
+    border-radius: 4px;
+}
+
+.share-button-facebook{
+    background-color: #3b5998;
+}
+
+.share-button-twitter{
+    background-color: #00aced;
+}
+
+.share-button-googleplus{
+    background-color: #dd4b39;
+}
+
+.share-button-linkedin{
+    background-color: #007bb6;
 }
