@@ -8,10 +8,14 @@
 
   <title>Chris House | Building a Simple Archive Page with Jekyll</title>
   <meta name="description" content="I recently decided to build an archive page for my Jekyll site. Nothing fancy, just a list of posts grouped by year. I turned to the official Jekyll document...">
+  <meta property="og:url" content="http://chris.house" />
+  <meta property="og:title" content="Chris House" />
+  <meta property="og:description" content="Chris House is a web designer and front-end developer from Kansas City.
+" />
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/blog/building-a-simple-archive-page-with-jekyll/">
-  <link rel="alternate" type="application/rss+xml" title="chris.house" href="http://yourdomain.com/feed.xml">
+  <link rel="canonical" href="http://chris.house/blog/building-a-simple-archive-page-with-jekyll/">
+  <link rel="alternate" type="application/rss+xml" title="Chris House" href="http://chris.house/feed.xml">
 
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
@@ -36,7 +40,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/">chris.house</a>    
+    <a class="site-title" href="/">Chris House</a>    
 
   </div>
 
@@ -280,6 +284,19 @@
 <p>We added another <code class="highlighter-rouge">if</code> statement to write the final closing <code class="highlighter-rouge">&lt;/ul&gt;</code> tag to close out the final year list (all the previous closing <code class="highlighter-rouge">&lt;/ul&gt;</code>s have been taken care of by the earlier <code class="highlighter-rouge">if</code> statement). Here our <code class="highlighter-rouge">forloop.last</code> will only evaluate to true on the very last item in the loop, giving us exactly what we need.</p>
 
 <p>Pretty clever. I wish I had thought of it.</p>
+
+
+      <ul class="share-buttons">
+	<li>Share on:</li>
+	<li><a
+	class="share-button share-button-facebook" href="http://www.facebook.com/sharer.php?u=http://chris.house/blog/building-a-simple-archive-page-with-jekyll/&p[title]=Building a Simple Archive Page with Jekyll">Facebook</a></li>
+	<li><a
+	class="share-button share-button-twitter" href="http://twitter.com/share?url=http://chris.house/blog/building-a-simple-archive-page-with-jekyll/&text=Building a Simple Archive Page with Jekyll">Twitter</a></li>
+	<li><a
+	class="share-button share-button-googleplus" href="https://plus.google.com/share?url=http://chris.house/blog/building-a-simple-archive-page-with-jekyll/">Google+</a></li>
+	<li><a
+	class="share-button share-button-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=http://chris.house/blog/building-a-simple-archive-page-with-jekyll/&title=Building a Simple Archive Page with Jekyll&source=http://chris.house">LinkedIn</a>	</li>
+</ul>
 
 
       
