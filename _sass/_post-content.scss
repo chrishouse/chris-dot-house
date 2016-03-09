@@ -153,3 +153,58 @@
 .share-button-linkedin{
     background-color: #007bb6;
 }
+
+.browser-support{
+    height: 120px;
+    width: 100%;
+    margin: 10px 0 40px 0;
+    display: flex;    
+    .browser-support-cell{
+        height: 100%;
+        border: solid 1px white;
+        display: flex;
+        flex-direction: column;
+        .browser-support-name,
+        .browser-support-info{
+            text-align: center;
+            line-height: 1;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 4px;
+        }
+        .browser-support-name{
+            justify-content: flex-end;
+            padding: 10px 10px 3px 10px;
+        }
+        .browser-support-info{
+            justify-content: center;
+            padding: 10px;
+            @include media-query($on-laptop){
+                margin-bottom: 8px;
+            }
+        }
+    }
+    .yes{
+        background-color: #86e35d;
+    }
+    .no{
+        background-color: #ff8181;
+    }
+    .partial{
+        background-color: #ffbc64;
+    }
+    .flagged{
+        background-color: #bada55;
+    }  
+    @include media-query($on-laptop){
+        width: 50%;
+        margin: 0 auto;
+        flex-direction: column;
+        height: auto;
+    }
+    @include media-query($on-palm){
+        width: 100%;
+    }
+}
