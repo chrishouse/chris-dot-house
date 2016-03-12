@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://chris.house/blog/grunt-configuration-for-react-browserify-babelify/</loc>
+<lastmod>2016-03-11T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://chris.house/blog/why-css-custom-properties-are-awesome/</loc>
+<lastmod>2016-03-09T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://chris.house/blog/a-complete-guide-css-grid-layout/</loc>
+<lastmod>2016-03-04T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://chris.house/blog/building-a-simple-archive-page-with-jekyll/</loc>
+<lastmod>2016-03-01T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://chris.house/blog/one-week-with-jekyll/</loc>
+<lastmod>2016-02-26T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://chris.house/about/</loc>
+</url>
+<url>
+<loc>http://chris.house/archive/</loc>
+</url>
+<url>
+<loc>http://chris.house/</loc>
+</url>
+</urlset>
