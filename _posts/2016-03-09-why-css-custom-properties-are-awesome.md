@@ -11,7 +11,7 @@ excerpt_separator: <!-- excerpt-end -->
 
 CSS custom properties (or CSS variables, as they'll likely be referred to by most people) have gained a lot of attention lately with the releases of Chrome 49 and Firefox 43, both of which support them without the need for a prefix. Rob Dodson from Google recently wrote [an excellent article on them](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care?hl=en). Like many people, my instant reaction was something like, *why would I need in-browser CSS variables if I use Sass?* But after fiddling with them for a few days I now understand that their usefulness extends beyond what Sass (or any other preprocessor) is capable of.<!-- excerpt-end -->
 
-###How CSS Variables Work
+### How CSS Variables Work
 
 CSS variables work much the same as the variables you're using in other languages. You make up a name, assign it a value, and then refer to that name later in your code. Here's how you do it in CSS:
 
@@ -30,7 +30,7 @@ This will set the value of `background-color` to `#bada55`. Some important thing
 * The variable is set on a selector, in this case the pseudo class `:root`. But it can be any element that's a parent of the elements that will use the variable. `html` would work pretty well too if you want your variable global.
 * The way you call the variable is with the `var()` function.
 
-###Stop Thinking About Sass
+### Stop Thinking About Sass
 
 I know you still are. Let me show you why you need to start looking at CSS variables as a whole new beast. Think about this example:
 
@@ -69,9 +69,9 @@ Here's another trick CSS variables have up their sleeve:
 
 Yep, you can declare variables inside of media queries. We're through the looking glass here people...
 
-###More Cool Stuff
+### More Cool Stuff
 
-####Variables Within Variables
+#### Variables Within Variables
 
 CSS variables can get their value from other variables:
 
@@ -82,7 +82,7 @@ body{
 }
 {% endhighlight %}
 
-####Fallback Values
+#### Fallback Values
 
 The `var()` function allows you to set not only the variable, but any fallback values to use in case the variable is invalid.
 
@@ -95,7 +95,7 @@ p{
 }
 {% endhighlight %}
 
-####Using calc()
+#### Using calc()
 
 You can use your variables inside of the calc() function, like this:
 
@@ -108,11 +108,11 @@ html{
 }
 {% endhighlight %}
 
-####CSS Variables in JavaScript
+#### CSS Variables in JavaScript
 
 Perhaps what separates CSS variables from Sass variables more than anything else is the ability to work with them inside JavaScript. You can use the JavaScript methods `getPropertyValue()` and `setProperty()` to retrieve or set a CSS variable, respectively. [Rob's article](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care?hl=en) has some excellent examples.
 
-###Browser Support
+### Browser Support
 
 This is always the bummer part. But fortunately things aren't too bad for CSS variables. Chrome and Firefox are a go! And Safari 9.1 and iOS Safari 9.3 will also introduce support.
 
@@ -147,6 +147,6 @@ This is always the bummer part. But fortunately things aren't too bad for CSS va
 	</div>
 </section>
 
-###Conclusion
+### Conclusion
 
 I hope you can see how incredibly useful CSS variables are. I also hope you see that CSS variables and Sass variables are definitely *not* in some sort of battle for dominance. Their functionality barely overlaps, and you'll likely find that they fit nicely side-by-side in your web toolbox. Start using them today. If you need to support IE/Edge you'll need to use caution, but it shouldn't be too tricky to concoct a workable fallback.  
