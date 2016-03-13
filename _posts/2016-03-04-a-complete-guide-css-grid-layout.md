@@ -329,6 +329,8 @@ Here's a browser support table which I'll keep up-to-date:
 }
 
 .container{
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
   grid-template-areas: "header header header header"
                        "main main . sidebar"
                        "footer footer footer footer"
