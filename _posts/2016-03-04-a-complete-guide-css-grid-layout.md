@@ -399,7 +399,8 @@ Here's a browser support table which I'll keep up-to-date:
   grid-row-gap: 15px;
 }
 {% endhighlight %}	
-	<img src="/images/grid-column-row-gap.png" alt="Example of grid-column-gap and grid-row-gap">			
+	<img src="/images/grid-column-row-gap.png" alt="Example of grid-column-gap and grid-row-gap">
+	<p>The gutters are only created <em>between</em> the columns/rows, not on the outer edges.</p>			
 
 	<a class="top-link" href="#top">[top]</a>
 	</div>
