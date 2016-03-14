@@ -72,7 +72,7 @@
 
 .collapsible-control{
     margin-top: 25px !important;
-    /* cursor: pointer; */
+    cursor: pointer;
     &.collapsed{
         &:before{
             display: inline-block;
