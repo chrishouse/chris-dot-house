@@ -178,9 +178,6 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-grid-template-columns-rows">grid-template-rows</a></li>
 			<li><a href="#prop-grid-template-areas">grid-template-areas</a></li>
 			<li><a href="#prop-grid-template">grid-template</a></li>
-			<li><a href="#prop-grid-auto-columns-rows">grid-auto-columns</a></li>
-			<li><a href="#prop-grid-auto-columns-rows">grid-auto-rows</a></li>
-			<li><a href="#prop-grid-auto-flow">grid-auto-flow</a></li>
 			<li><a href="#prop-grid-column-row-gap">grid-column-gap</a></li>
 			<li><a href="#prop-grid-column-row-gap">grid-row-gap</a></li>
 			<li><a href="#prop-grid-gap">grid-gap</a></li>
@@ -188,6 +185,9 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-align-items">align-items</a></li>
 			<li><a href="#prop-justify-content">justify-content</a></li>
 			<li><a href="#prop-align-content">align-content</a></li>
+			<li><a href="#prop-grid-auto-columns-rows">grid-auto-columns</a></li>
+			<li><a href="#prop-grid-auto-columns-rows">grid-auto-rows</a></li>
+			<li><a href="#prop-grid-auto-flow">grid-auto-flow</a></li>			
 			<li><a href="#prop-grid">grid</a></li>
 		</ul>
 	</div>
@@ -528,7 +528,7 @@ Here's a browser support table which I'll keep up-to-date:
 
 	<div id="prop-justify-content" class="grid-properties">
 		<h4>justify-content</h4>
-		<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like px. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the <em>column</em> axis (as opposed to <a href="#prop-align-content"><code>align-content</code></a> which aligns the grid along the <em>row</em> axis).</p>
+		<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like <code>px</code>. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the <em>column</em> axis (as opposed to <a href="#prop-align-content"><code>align-content</code></a> which aligns the grid along the <em>row</em> axis).</p>
 		<h5>Values:</h5>
 		<ul class="value-list">
 			<li><b>start</b> - aligns the grid to the left end of the grid container</li>
@@ -593,7 +593,7 @@ Here's a browser support table which I'll keep up-to-date:
 
 <div id="prop-align-content" class="grid-properties">
 		<h4>align-content</h4>
-		<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like px. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the <em>row</em> axis (as opposed to <a href="#prop-justify-content"><code>justify-content</code></a> which aligns the grid along the <em>column</em> axis).</p>
+		<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like <code>px</code>. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the <em>row</em> axis (as opposed to <a href="#prop-justify-content"><code>justify-content</code></a> which aligns the grid along the <em>column</em> axis).</p>
 		<h5>Values:</h5>
 		<ul class="value-list">
 			<li><b>start</b> - aligns the grid to the top of the grid container</li>
