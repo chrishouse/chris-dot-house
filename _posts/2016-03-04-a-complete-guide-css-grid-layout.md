@@ -356,6 +356,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% highlight css %}
 .container{
   grid-template: none | subgrid | <grid-template-columns> / <grid-template-rows>;
+}  
 {% endhighlight %}		
 		<p>It also accepts a more complex but quite handy syntax for specifying all three. Here's an example:</p>	
 {% highlight css %}
