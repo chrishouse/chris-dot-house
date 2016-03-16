@@ -876,7 +876,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% highlight css %}
 .item-c{
   grid-column: 3 / span 2;
-  grid row: third-line / 4;
+  grid-row: third-line / 4;
 }
 {% endhighlight %}
 	<img src="/images/grid-start-end-c.png" alt="Example of grid-column/grid-row">
