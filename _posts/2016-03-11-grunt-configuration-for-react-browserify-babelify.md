@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Grunt configuration for React + Browserify + Babelify"
+title:  "Grunt Configuration for React + Browserify + Babelify"
 date:   2016-03-11
 updated: 
 author: Chris House
