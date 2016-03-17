@@ -1,6 +1,40 @@
 /**
  * Syntax highlighting styles
  */
+figure.highlight{
+    position: relative;
+    pre{
+        padding-top: 35px;
+    }
+    code:before{        
+        display: block;
+        font-size: 12px;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        border-radius: 3px 3px 0 0;
+        width: calc(100% - 2px);
+        height: auto;
+        padding: 3px 12px;
+        box-sizing: border-box;
+        background-color: #dbdbec;
+        color: $grey-color-light;
+        font-family: $secondary-font-family;
+    }
+    code.language-css:before{
+        content: 'CSS';
+    }
+    code.language-html:before{
+        content: 'HTML';
+    }
+    code.language-javascript:before{
+        content: 'JavaScript';
+    }
+    code.language-markdown:before{
+        content: 'Markdown';
+    }
+}
+
 .highlight {
     background: #fff;
     @extend %vertical-rhythm;
