@@ -25,6 +25,9 @@
             <a class="page-link" href="/">Home</a>
             <a class="page-link" href="/about">About</a>
             <a class="page-link" href="/archive">Archive</a>
+            {% if site.twitter_username %}
+              <a class="page-link" href="https://twitter.com/{{ site.twitter_username }}"><span class="icon icon--twitter">{% include icon-twitter.svg %}</span></a>
+            {% endif %}
         </div>
       </nav>
 

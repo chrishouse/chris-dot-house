@@ -212,7 +212,18 @@ pre {
         vertical-align: middle;
 
         path {
-            fill: $grey-color;
+            fill: $grey-color;                    
         }
+
+        .page-link &{
+            path{
+                fill: white;            
+            }
+            &:hover{
+                path{
+                    fill: $accent-color;
+                }
+            }
+        } 
     }
 }
