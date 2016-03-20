@@ -217,7 +217,8 @@ pre {
 
         .page-link &{
             path{
-                fill: white;            
+                fill: white;
+                transition: all .1s;            
             }
             &:hover{
                 path{
