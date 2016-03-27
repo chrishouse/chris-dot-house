@@ -53,7 +53,7 @@ This was a team project at AMP in which I was responsible for the design and the
 
 <a href="http://www.sehousedesigns.com"><img src="{{ site.baseurl }}/images/work-se-house-designs-large.jpg" srcset="{{ site.baseurl }}/images/work-se-house-designs-large.jpg 940w, {{ site.baseurl }}/images/work-se-house-designs-medium.jpg 700w, {{ site.baseurl }}/images/work-se-house-designs-small.jpg 400w" alt="SE House Designs"></a>
 
-Built with custom JavaScript/jQuery, this is a personal project for my wife Samantha's art portfolio. The main goal was to create a smooth, streamlined experience. Although I likely would have been better off utilize a framework like React, this was a great learning experience, and we're both happy with the result.
+Built with custom JavaScript/jQuery, this is a personal project for my wife Samantha's art portfolio. The main goal was to create a smooth, streamlined experience. Although I likely would have been better off utilizing a framework like React, this was a great learning experience, and we're both happy with the result.
 
 #### [Starfield Ministries](http://www.starfieldministries.org)
 
@@ -71,7 +71,7 @@ I was the sole designer and developer on this site. Built with WordPress and the
 {: .work-sub-text}
 (As owner and front-end developer at [Caiman Web Design][cwd])
 
-This is another site built with WordPress and the [_s][underscores] starter theme. I designed and developed it for the Holden First United Methodist Church as a means to convey its family-oriented and welcoming personality. The technical highlight of the site is the JavaScript-driven semi-transparent triangle design partially overlaying the home page image collage.
+This is another site built with WordPress and the [_s][underscores] starter theme. I designed and developed it for the Holden First United Methodist Church as a means to convey their family-oriented and welcoming personality. The technical highlight of the site is the JavaScript-driven semi-transparent triangle design partially overlaying the home page image collage.
 
 <!-- #### [Samantha.House](http://samantha.house)
 
