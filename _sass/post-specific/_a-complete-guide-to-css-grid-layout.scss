@@ -39,6 +39,12 @@
     }    
 }
 
+.props-table-of-contents-container, .grid-terms, .grid-properties{
+    h4{
+        margin-top: 0;
+    }
+}
+
 .grid-terms-diagram{
     display: flex;
     flex-direction: column;
@@ -146,7 +152,6 @@
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 25px;
-        margin-top: 0;
         font-family: $secondary-font-family;        
     }
     h5{
