@@ -177,7 +177,6 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-grid-template-columns-rows">grid-template-columns</a></li>
 			<li><a href="#prop-grid-template-columns-rows">grid-template-rows</a></li>
 			<li><a href="#prop-grid-template-areas">grid-template-areas</a></li>
-			<li><a href="#prop-grid-template">grid-template</a></li>
 			<li><a href="#prop-grid-column-row-gap">grid-column-gap</a></li>
 			<li><a href="#prop-grid-column-row-gap">grid-row-gap</a></li>
 			<li><a href="#prop-grid-gap">grid-gap</a></li>
@@ -344,43 +343,6 @@ Here's a browser support table which I'll keep up-to-date:
 	<a class="top-link" href="#top">[top]</a>	
 	</div>
 
-	<div id="prop-grid-template" class="grid-properties">
-		<h4>grid-template</h4>
-		<p>A shorthand for setting <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, and <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> in a single declaration.</p>	
-		<h5>Values:</h5>
-		<ul class="values-list">			
-			<li><b>none</b> - sets all three properties to their initial values</li>
-			<li><b>subgrid</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to "subgrid", and <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> to its initial value</li>
-			<li><b>&lt;grid-template-columns&gt; / &lt;grid-template-rows&gt;</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> to the specified values, respectively, and sets <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> to "none"</li>
-		</ul>
-{% highlight css %}
-.container{
-  grid-template: none | subgrid | <grid-template-columns> / <grid-template-rows>;
-}  
-{% endhighlight %}		
-		<p>It also accepts a more complex but quite handy syntax for specifying all three. Here's an example:</p>	
-{% highlight css %}
-.container{
-  grid-template: auto 50px auto /
-                 [row1-start] 25px "header header header" [row1-end]
-                 [row2-start] "footer footer footer" 25px [row2-end]; 
-}
-{% endhighlight %}	
-<p>That's equivalent to this:</p>
-{% highlight css %}
-.container{
-  grid-template-columns: auto 50px auto;
-  grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];
-  grid-template-areas: "header header header"
-                       "footer footer footer"; 
-}
-{% endhighlight %}
-	<p>Since <code>grid-template</code> doesn't reset the <em>implicit</em> grid properties (<a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>), which is probably what you want to do in most cases, it's recommended to use the <a href="#prop-grid"><code>grid</code></a> property instead of <code>grid-template</code>.</p>
-
-	<a class="top-link" href="#top">[top]</a>	
-	</div>	
-
-
 	<div id="prop-grid-column-row-gap" class="grid-properties">
 	<h4>grid-column-gap<br />grid-row-gap</h4>
 	<p>Specifies the size of the grid lines. You can think of it like setting the width of the gutters between the columns/rows.</p>
@@ -397,7 +359,8 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>Example:</p>
 {% highlight css %}
 .container{
-  grid-template: 100px 50px 100px / 80px auto 80px	
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px;	
   grid-column-gap: 10px;
   grid-row-gap: 15px;
 }
@@ -424,7 +387,8 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>Example:</p>
 {% highlight css %}
 .container{
-  grid-template: 100px 50px 100px / 80px auto 80px	
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px;	
   grid-gap: 10px 15px;
 }
 {% endhighlight %}	
@@ -764,32 +728,31 @@ Here's a browser support table which I'll keep up-to-date:
 
 	<div id="prop-grid" class="grid-properties">
 		<h4>grid</h4>
-		<p>A shorthand for setting all of the following properties in a single declaration: <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>. It also sets <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a> and <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> to their initial values, even though they can't be explicitly set by this property.</p>
+		<p>A shorthand for setting all of the following properties in a single declaration: <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>. It also sets <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a> and <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> to their initial values, even though they can't be explicitly set by this property.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">			
-			<li><b>&lt;grid-template&gt;</b> - accepts all the same values as <a href="#prop-grid-template"><code>grid-template</code></a></li>
-			<li><b>&lt;grid-auto-flow&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a></li>
-			<li><b>&lt;grid-auto-columns&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a></li>
-			<li><b>&lt;grid-auto-rows&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a></li>
+			<li><b>none</b> - sets all sub-properties to their initial values</li>
+			<li><b>subgrid</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to <code>subgrid</code>, and all other sub-properties to their initial values</li>
+			<li><b>&lt;grid-template-rows&gt; / &lt;grid-template-columns&gt;</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to the specified values, respectively, and all other sub-properties to their initial values</li>
+			<li><b>&lt;grid-auto-flow&gt; [&lt;grid-auto-rows&gt; [ / &lt;grid-auto-columns&gt;] ] </b> - accepts all the same values as <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a> and <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, respectively. If <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a> is omitted, it is set to the value specified for <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>. If both are omitted, they are set to their initial values</li>
 		</ul>
 {% highlight css %}
 .container{
-    grid: <grid-template> <grid-auto-flow> <grid-auto-columns> <grid-auto-rows>;
+    grid: none | subgrid | <grid-template-rows> / <grid-template-columns> | <grid-auto-flow> [<grid-auto-rows> [/ <grid-auto-columns>]];
 }
 {% endhighlight %}			
 		<p>Examples:</p>
 		<p>The following two code blocks are equivalent:</p>
 {% highlight css %}
 .container{
-    grid: row 1fr;
+    grid: 200px auto / 1fr auto 1fr;
 }
 {% endhighlight %}	
 {% highlight css %}
 .container{
-    grid-template: none;
-    grid-auto-columns: 1fr;
-    grid-auto-rows: 1fr;
-    grid-auto-flow: row;
+    grid-template-rows: 200px auto;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: none;
 }
 {% endhighlight %}
 		<p>And the following two code blocks are equivalent:</p>	
@@ -800,13 +763,30 @@ Here's a browser support table which I'll keep up-to-date:
 {% endhighlight %}
 {% highlight css %}
 .container{
-    grid-template: none;
-    grid-auto-columns: 1fr;
-    grid-auto-rows: auto;
     grid-auto-flow: column;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: auto;        
 }
 {% endhighlight %}	
-		<p>Since <code>grid</code> resets the <em>implicit</em> grid properties (<a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>), which is probably what you want to do in most cases, it's recommended to use <code>grid</code> instead of <a href="#prop-grid-template"><code>grid-template</code></a>.</p>							
+
+		<p>It also accepts a more complex but quite handy syntax for setting everything at once. You specify <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a> and <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, and all the other sub-properties are set to their initial values. What you're doing is specifying the line names and track sizes inline with their respective grid areas. This is easiest to describe with an example:</p>	
+{% highlight css %}
+.container{
+  grid: [row1-start] "header header header" 1fr [row1-end]
+        [row2-start] "footer footer footer" 25px [row2-end]; 
+        / auto 50px auto
+}
+{% endhighlight %}	
+<p>That's equivalent to this:</p>
+{% highlight css %}
+.container{  
+  grid-template-areas: "header header header"
+                       "footer footer footer"
+  grid-template-rows: [row1-start] 1fr [row1-end row2-start] 25px [row2-end];
+  grid-template-columns: auto 50px auto;; 
+}
+{% endhighlight %}
+
 
 		<a class="top-link" href="#top">[top]</a>	
 	</div>
