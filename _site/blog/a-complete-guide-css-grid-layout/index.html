@@ -259,7 +259,6 @@ Here's a browser support table which I'll keep up-to-date:
 			<li><a href="#prop-grid-template-columns-rows">grid-template-columns</a></li>
 			<li><a href="#prop-grid-template-columns-rows">grid-template-rows</a></li>
 			<li><a href="#prop-grid-template-areas">grid-template-areas</a></li>
-			<li><a href="#prop-grid-template">grid-template</a></li>
 			<li><a href="#prop-grid-column-row-gap">grid-column-gap</a></li>
 			<li><a href="#prop-grid-column-row-gap">grid-row-gap</a></li>
 			<li><a href="#prop-grid-gap">grid-gap</a></li>
@@ -425,43 +424,6 @@ Here's a browser support table which I'll keep up-to-date:
 	<a class="top-link" href="#top">[top]</a>	
 	</div>
 
-	<div id="prop-grid-template" class="grid-properties">
-		<h4>grid-template</h4>
-		<p>A shorthand for setting <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, and <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> in a single declaration.</p>	
-		<h5>Values:</h5>
-		<ul class="values-list">			
-			<li><b>none</b> - sets all three properties to their initial values</li>
-			<li><b>subgrid</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to "subgrid", and <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> to its initial value</li>
-			<li><b>&lt;grid-template-columns&gt; / &lt;grid-template-rows&gt;</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> to the specified values, respectively, and sets <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a> to "none"</li>
-		</ul>
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-  <span class="nl">grid-template</span><span class="p">:</span> <span class="nb">none</span> <span class="err">|</span> <span class="n">subgrid</span> <span class="err">|</span> <span class="err">&lt;</span><span class="n">grid-template-columns</span><span class="err">&gt;</span> <span class="p">/</span> <span class="err">&lt;</span><span class="n">grid-template-rows</span><span class="err">&gt;</span><span class="p">;</span>
-<span class="p">}</span>  </code></pre></figure>
-		
-		<p>It also accepts a more complex but quite handy syntax for specifying all three. Here's an example:</p>	
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-  <span class="nl">grid-template</span><span class="p">:</span> <span class="nb">auto</span> <span class="m">50px</span> <span class="nb">auto</span> <span class="p">/</span>
-                 <span class="p">[</span><span class="n">row1-start</span><span class="p">]</span> <span class="m">25px</span> <span class="s1">"header header header"</span> <span class="p">[</span><span class="n">row1-end</span><span class="p">]</span>
-                 <span class="p">[</span><span class="n">row2-start</span><span class="p">]</span> <span class="s1">"footer footer footer"</span> <span class="m">25px</span> <span class="p">[</span><span class="n">row2-end</span><span class="p">];</span> 
-<span class="p">}</span></code></pre></figure>
-	
-<p>That's equivalent to this:</p>
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-  <span class="py">grid-template-columns</span><span class="p">:</span> <span class="nb">auto</span> <span class="m">50px</span> <span class="nb">auto</span><span class="p">;</span>
-  <span class="py">grid-template-rows</span><span class="p">:</span> <span class="p">[</span><span class="n">row1-start</span><span class="p">]</span> <span class="m">25px</span> <span class="p">[</span><span class="n">row1-end</span> <span class="n">row2-start</span><span class="p">]</span> <span class="m">25px</span> <span class="p">[</span><span class="n">row2-end</span><span class="p">];</span>
-  <span class="py">grid-template-areas</span><span class="p">:</span> <span class="s1">"header header header"</span>
-                       <span class="s1">"footer footer footer"</span><span class="p">;</span> 
-<span class="p">}</span></code></pre></figure>
-
-	<p>Since <code>grid-template</code> doesn't reset the <em>implicit</em> grid properties (<a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>), which is probably what you want to do in most cases, it's recommended to use the <a href="#prop-grid"><code>grid</code></a> property instead of <code>grid-template</code>.</p>
-
-	<a class="top-link" href="#top">[top]</a>	
-	</div>	
-
-
 	<div id="prop-grid-column-row-gap" class="grid-properties">
 	<h4>grid-column-gap<br />grid-row-gap</h4>
 	<p>Specifies the size of the grid lines. You can think of it like setting the width of the gutters between the columns/rows.</p>
@@ -478,8 +440,9 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>Example:</p>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-  <span class="nl">grid-template</span><span class="p">:</span> <span class="m">100px</span> <span class="m">50px</span> <span class="m">100px</span> <span class="p">/</span> <span class="m">80px</span> <span class="nb">auto</span> <span class="m">80px</span>	
-  <span class="n">grid-column-gap</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">100px</span> <span class="m">50px</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="py">grid-template-rows</span><span class="p">:</span> <span class="m">80px</span> <span class="nb">auto</span> <span class="m">80px</span><span class="p">;</span>	
+  <span class="py">grid-column-gap</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
   <span class="py">grid-row-gap</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 	
@@ -505,8 +468,9 @@ Here's a browser support table which I'll keep up-to-date:
 	<p>Example:</p>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-  <span class="nl">grid-template</span><span class="p">:</span> <span class="m">100px</span> <span class="m">50px</span> <span class="m">100px</span> <span class="p">/</span> <span class="m">80px</span> <span class="nb">auto</span> <span class="m">80px</span>	
-  <span class="n">grid-gap</span><span class="p">:</span> <span class="m">10px</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">100px</span> <span class="m">50px</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="py">grid-template-rows</span><span class="p">:</span> <span class="m">80px</span> <span class="nb">auto</span> <span class="m">80px</span><span class="p">;</span>	
+  <span class="py">grid-gap</span><span class="p">:</span> <span class="m">10px</span> <span class="m">15px</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 	
 	<p>If no <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> is specified, it's set to the same value as <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a></p>		
@@ -845,32 +809,31 @@ Here's a browser support table which I'll keep up-to-date:
 
 	<div id="prop-grid" class="grid-properties">
 		<h4>grid</h4>
-		<p>A shorthand for setting all of the following properties in a single declaration: <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>. It also sets <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a> and <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> to their initial values, even though they can't be explicitly set by this property.</p>
+		<p>A shorthand for setting all of the following properties in a single declaration: <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a>, <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a>, <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>. It also sets <a href="#prop-grid-column-row-gap"><code>grid-column-gap</code></a> and <a href="#prop-grid-column-row-gap"><code>grid-row-gap</code></a> to their initial values, even though they can't be explicitly set by this property.</p>
 		<h5>Values:</h5>
 		<ul class="values-list">			
-			<li><b>&lt;grid-template&gt;</b> - accepts all the same values as <a href="#prop-grid-template"><code>grid-template</code></a></li>
-			<li><b>&lt;grid-auto-flow&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a></li>
-			<li><b>&lt;grid-auto-columns&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a></li>
-			<li><b>&lt;grid-auto-rows&gt;</b> - accepts all the same values as <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a></li>
+			<li><b>none</b> - sets all sub-properties to their initial values</li>
+			<li><b>subgrid</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to <code>subgrid</code>, and all other sub-properties to their initial values</li>
+			<li><b>&lt;grid-template-rows&gt; / &lt;grid-template-columns&gt;</b> - sets <a href="#prop-grid-template-columns-rows"><code>grid-template-rows</code></a> and <a href="#prop-grid-template-columns-rows"><code>grid-template-columns</code></a> to the specified values, respectively, and all other sub-properties to their initial values</li>
+			<li><b>&lt;grid-auto-flow&gt; [&lt;grid-auto-rows&gt; [ / &lt;grid-auto-columns&gt;] ] </b> - accepts all the same values as <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a> and <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, respectively. If <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a> is omitted, it is set to the value specified for <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>. If both are omitted, they are set to their initial values</li>
 		</ul>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-    <span class="py">grid</span><span class="p">:</span> <span class="err">&lt;</span><span class="n">grid-template</span><span class="err">&gt;</span> <span class="err">&lt;</span><span class="n">grid-auto-flow</span><span class="err">&gt;</span> <span class="err">&lt;</span><span class="n">grid-auto-columns</span><span class="err">&gt;</span> <span class="err">&lt;</span><span class="n">grid-auto-rows</span><span class="err">&gt;</span><span class="p">;</span>
+    <span class="py">grid</span><span class="p">:</span> <span class="nb">none</span> <span class="err">|</span> <span class="n">subgrid</span> <span class="err">|</span> <span class="err">&lt;</span><span class="n">grid-template-rows</span><span class="err">&gt;</span> <span class="p">/</span> <span class="err">&lt;</span><span class="n">grid-template-columns</span><span class="err">&gt;</span> <span class="err">|</span> <span class="err">&lt;</span><span class="n">grid-auto-flow</span><span class="err">&gt;</span> <span class="p">[</span><span class="err">&lt;</span><span class="n">grid-auto-rows</span><span class="err">&gt;</span> <span class="p">[/</span> <span class="err">&lt;</span><span class="n">grid-auto-columns</span><span class="err">&gt;</span><span class="p">]];</span>
 <span class="p">}</span></code></pre></figure>
 			
 		<p>Examples:</p>
 		<p>The following two code blocks are equivalent:</p>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-    <span class="py">grid</span><span class="p">:</span> <span class="n">row</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
+    <span class="py">grid</span><span class="p">:</span> <span class="m">200px</span> <span class="nb">auto</span> <span class="p">/</span> <span class="m">1</span><span class="n">fr</span> <span class="nb">auto</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 	
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-    <span class="nl">grid-template</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-    <span class="py">grid-auto-columns</span><span class="p">:</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
-    <span class="py">grid-auto-rows</span><span class="p">:</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
-    <span class="py">grid-auto-flow</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+    <span class="py">grid-template-rows</span><span class="p">:</span> <span class="m">200px</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">1</span><span class="n">fr</span> <span class="nb">auto</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
+    <span class="py">grid-template-areas</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
 		<p>And the following two code blocks are equivalent:</p>	
@@ -881,13 +844,30 @@ Here's a browser support table which I'll keep up-to-date:
 
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
-    <span class="nl">grid-template</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-    <span class="py">grid-auto-columns</span><span class="p">:</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
-    <span class="py">grid-auto-rows</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
     <span class="py">grid-auto-flow</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+    <span class="py">grid-auto-rows</span><span class="p">:</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
+    <span class="py">grid-auto-columns</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>        
 <span class="p">}</span></code></pre></figure>
 	
-		<p>Since <code>grid</code> resets the <em>implicit</em> grid properties (<a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a>, and <a href="#prop-grid-auto-flow"><code>grid-auto-flow</code></a>), which is probably what you want to do in most cases, it's recommended to use <code>grid</code> instead of <a href="#prop-grid-template"><code>grid-template</code></a>.</p>							
+
+		<p>It also accepts a more complex but quite handy syntax for setting everything at once. You specify <a href="#prop-grid-template-areas"><code>grid-template-areas</code></a>, <a href="#prop-grid-auto-columns-rows"><code>grid-auto-rows</code></a> and <a href="#prop-grid-auto-columns-rows"><code>grid-auto-columns</code></a>, and all the other sub-properties are set to their initial values. What you're doing is specifying the line names and track sizes inline with their respective grid areas. This is easiest to describe with an example:</p>	
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>
+  <span class="py">grid</span><span class="p">:</span> <span class="p">[</span><span class="n">row1-start</span><span class="p">]</span> <span class="s1">"header header header"</span> <span class="m">1</span><span class="n">fr</span> <span class="p">[</span><span class="n">row1-end</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">row2-start</span><span class="p">]</span> <span class="s1">"footer footer footer"</span> <span class="m">25px</span> <span class="p">[</span><span class="n">row2-end</span><span class="p">];</span> 
+        <span class="err">/</span> <span class="err">auto</span> <span class="err">50px</span> <span class="err">auto</span>
+<span class="p">}</span></code></pre></figure>
+	
+<p>That's equivalent to this:</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span><span class="p">{</span>  
+  <span class="py">grid-template-areas</span><span class="p">:</span> <span class="s1">"header header header"</span>
+                       <span class="s1">"footer footer footer"</span>
+  <span class="n">grid-template-rows</span><span class="p">:</span> <span class="p">[</span><span class="n">row1-start</span><span class="p">]</span> <span class="m">1</span><span class="n">fr</span> <span class="p">[</span><span class="n">row1-end</span> <span class="n">row2-start</span><span class="p">]</span> <span class="m">25px</span> <span class="p">[</span><span class="n">row2-end</span><span class="p">];</span>
+  <span class="py">grid-template-columns</span><span class="p">:</span> <span class="nb">auto</span> <span class="m">50px</span> <span class="nb">auto</span><span class="p">;</span><span class="err">;</span> 
+<span class="p">}</span></code></pre></figure>
+
+
 
 		<a class="top-link" href="#top">[top]</a>	
 	</div>
