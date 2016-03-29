@@ -783,7 +783,7 @@ Here's a browser support table which I'll keep up-to-date:
   grid-template-areas: "header header header"
                        "footer footer footer"
   grid-template-rows: [row1-start] 1fr [row1-end row2-start] 25px [row2-end];
-  grid-template-columns: auto 50px auto;; 
+  grid-template-columns: auto 50px auto; 
 }
 {% endhighlight %}
 
