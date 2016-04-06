@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Archive | Chris House</title>
-  <meta name="description" content="Chris House is a web designer and front-end developer from Kansas City.
-">
+  <title>Building a Home Page with Grid | Chris House</title>
+  <meta name="description" content="When I begin a project and start planning how to lay out the home page, my brain jumps to floats and positioning. Some of you might go with Bootstrap or anot...">
   <meta property="og:image" content="/images/og-image.jpg" />
   <meta property="og:url" content="http://chris.house" />
   <meta property="og:title" content="chris.house" />
@@ -16,7 +15,7 @@
 " />
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://chris.house/archive/">
+  <link rel="canonical" href="http://chris.house/blog/building-a-home-page-with-grid/">
   <link rel="alternate" type="application/rss+xml" title="chris.house" href="http://chris.house/feed.xml">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 
@@ -80,75 +79,66 @@
 
 
     <div class="page-content">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="page-header">
+  <header class="post-header">
   	<div class="wrapper">
-    	<h1 class="post-title">Archive</h1>
-    </div>
+	    <h1 class="post-title" itemprop="name headline">Building a Home Page with Grid</h1>
+	    <p class="post-meta"> by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="author-link" href="mailto:me@chris.house" itemprop="name">Chris House</a></span><time datetime="2016-04-01T00:00:00-05:00" itemprop="datePublished">April 1, 2016</time></p>
+	</div>
   </header>
 
-  <div class="post-content">
+  <div class="post-content article-body" itemprop="articleBody">
   	<div class="wrapper">
-    	<div class="archive">
+      
+    	<p>When I begin a project and start planning how to lay out the home page, my brain jumps to floats and positioning. Some of you might go with Bootstrap or another framework. This is because it’s the year 2016 and that’s still how we do things. But I’d like to do some mental time traveling. Let’s pretend it’s the year 2018 and the CSS Grid Layout module is supported by all major browsers. Our page layout paradigm has shifted completely, and CSS capabilities are finally in harmony with our design goals. It’s a great time to be a web developer. Let’s create a home page using our awesome new tool.<!-- excerpt-end --></p>
 
-  <ul class="post-list">
-    
-	  
-	  
-	    
-	    <h1 id="y2016">2016</h1>
-	    <ul>
-	    
-	  
-	    <li><a href="/blog/dont-forget-about-height-based-media-queries/"><span class="post-meta">April 6, 2016</span> - Don't Forget About Height-Based Media Queries</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/building-a-home-page-with-grid/"><span class="post-meta">April 1, 2016</span> - Building a Home Page with Grid</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/why-you-should-consider-linux-for-web-development/"><span class="post-meta">March 22, 2016</span> - Why You Should Consider Linux for Web Development</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/thinking-about-the-has-css-selector/"><span class="post-meta">March 17, 2016</span> - Thinking About the :has() CSS Selector</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/grunt-configuration-for-react-browserify-babelify/"><span class="post-meta">March 11, 2016</span> - Grunt Configuration for React + Browserify + Babelify</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/why-css-custom-properties-are-awesome/"><span class="post-meta">March 9, 2016</span> - Why CSS Custom Properties (a.k.a. CSS Variables) are Awesome</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/a-complete-guide-css-grid-layout/"><span class="post-meta">March 4, 2016</span> - A Complete Guide to CSS Grid Layout</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/building-a-simple-archive-page-with-jekyll/"><span class="post-meta">March 1, 2016</span> - Building a Simple Archive Page with Jekyll</a></li>
-	  
-	
-	  
-	  
-	    <li><a href="/blog/one-week-with-jekyll/"><span class="post-meta">February 26, 2016</span> - One Week with Jekyll</a></li>
-	  </ul>
-	
-  </ul>
+<p>Eck, it’s actually still 2016 and grid doesn’t work everywhere yet, so to view these demos you’ll need a grid-capable browser. I suggest using Chrome 49+ with the <em>Experimental Web Platform features</em> flag enabled (go to the URL chrome://flags and scroll down to “Experimental Web Platform features”). Okay, back to 2018.</p>
 
-</div>
+<h3>The Design</h3>
+
+<p>Here’s the page we’ll be creating:</p>
+
+
+      <ul class="share-buttons">
+	<li>Share on:</li>
+	<li><a
+	class="share-button share-button-facebook" href="http://www.facebook.com/sharer.php?u=http://chris.house/blog/building-a-home-page-with-grid/&p[title]=Building a Home Page with Grid">Facebook</a></li>
+	<li><a
+	class="share-button share-button-twitter" href="http://twitter.com/share?url=http://chris.house/blog/building-a-home-page-with-grid/&text=Building a Home Page with Grid">Twitter</a></li>
+	<li><a
+	class="share-button share-button-googleplus" href="https://plus.google.com/share?url=http://chris.house/blog/building-a-home-page-with-grid/">Google+</a></li>
+	<li><a
+	class="share-button share-button-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=http://chris.house/blog/building-a-home-page-with-grid/&title=Building a Home Page with Grid&source=http://chris.house">LinkedIn</a>	</li>
+</ul>
+
+
+      
+        <div id="disqus_thread"></div>
+        <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//chrishouse.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+      
     </div>
-  </div>
+  </div>  
 
 </article>
 

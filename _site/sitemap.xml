@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://chris.house/blog/dont-forget-about-height-based-media-queries/</loc>
+<lastmod>2016-04-06T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://chris.house/blog/building-a-home-page-with-grid/</loc>
+<lastmod>2016-04-01T00:00:00-05:00</lastmod>
+</url>
+<url>
 <loc>http://chris.house/blog/why-you-should-consider-linux-for-web-development/</loc>
 <lastmod>2016-03-22T00:00:00-05:00</lastmod>
 </url>

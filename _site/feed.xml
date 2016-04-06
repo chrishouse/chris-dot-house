@@ -6,9 +6,87 @@
 </description>
     <link>http://chris.house/</link>
     <atom:link href="http://chris.house/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 30 Mar 2016 09:20:54 -0500</pubDate>
-    <lastBuildDate>Wed, 30 Mar 2016 09:20:54 -0500</lastBuildDate>
+    <pubDate>Wed, 06 Apr 2016 16:29:53 -0500</pubDate>
+    <lastBuildDate>Wed, 06 Apr 2016 16:29:53 -0500</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Don&#39;t Forget About Height-Based Media Queries</title>
+        <description>&lt;p&gt;I like to think I’m getting pretty good at working with media queries. After all, they’re arguably the most integral part of responsive web design, and I’ve been building mobile-friendly sites for years now. But when I think about it, it’s really only &lt;em&gt;width&lt;/em&gt;-based media queries that I’m good at. I’m an absolute viking with &lt;code class=&quot;highlighter-rouge&quot;&gt;max-width&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;min-width&lt;/code&gt;, but yesterday I ran across a situation where I needed to control the content of my design based on the &lt;em&gt;height&lt;/em&gt; of the device. This was a first for me. My initial thought was, &lt;em&gt;I’ll just use vertical media queries… wait, do those even exist?&lt;/em&gt; Google soon informed me that, thankfully, yes they do. They may never be as utilized as their width-based counterparts, but they play an important role for specific types of designs.&lt;!-- excerpt-end --&gt;&lt;/p&gt;
+
+&lt;h3&gt;When You Might Need Them&lt;/h3&gt;
+
+&lt;p&gt;I’ll use yesterday’s experience as an example. My project’s design incorporates a scroll-free home page, which means everything on the page must fit within the viewport, and the user never sees a scrollbar. Once the device width gets down below 800px, the layout snaps into a traditional vertical-scrolling design. It may at first seem reasonable that the width-based media queries (i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;max-width: 800px&lt;/code&gt;) will take care of things, but what about the &lt;em&gt;heights&lt;/em&gt; of all the displays that are wider than 800px? My design looks great on my 1920x1080 monitor, but what about smaller but relatively common sizes like 1280x800 or 1366x768?&lt;/p&gt;
+
+&lt;h3&gt;How I Used Them&lt;/h3&gt;
+
+&lt;p&gt;Here’s how my page looks at 1300 x 860:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goamp-screenshot-1.jpg&quot; alt=&quot;scroll-free page at 1300 x 860&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Everything lays out nicely.&lt;/p&gt;
+
+&lt;p&gt;But now look at what happens if I shorten the viewport height down to 730px:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goamp-screenshot-2.jpg&quot; alt=&quot;scroll-free page at 1300 x 730, broken&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The bottom area begins to cut into the main area, and the three buttons are eclipsed. Not good. This is when &lt;code class=&quot;highlighter-rouge&quot;&gt;max-height&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;min-height&lt;/code&gt; come to the rescue.&lt;/p&gt;
+
+&lt;p&gt;To help everything fit nicely at this height, I chose to do three things: spread the “Innovative assessment…” text out from 66% to 100%, reduce the size of the paragraph text in the bottom area, and reduce the size of the “Learn More” links. My CSS looks something like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;850px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;.home-message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;.home-bottom&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.6rem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;.learn-more&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.9rem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And the result is much better:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goamp-screenshot-3.jpg&quot; alt=&quot;scroll-free page at 1300 x 730, fixed&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Although vertical breakpoints aren’t very common, it’s nice to know media queries are versatile enough to make them work. I definitely couldn’t have built this page without them.&lt;/p&gt;
+
+&lt;p&gt;Have you used height-based media queries? Share your experience in the comments.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Apr 2016 00:00:00 -0500</pubDate>
+        <link>http://chris.house/blog/dont-forget-about-height-based-media-queries/</link>
+        <guid isPermaLink="true">http://chris.house/blog/dont-forget-about-height-based-media-queries/</guid>
+        
+        <category>css</category>
+        
+        <category>responsive web design</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Building a Home Page with Grid</title>
+        <description>&lt;p&gt;When I begin a project and start planning how to lay out the home page, my brain jumps to floats and positioning. Some of you might go with Bootstrap or another framework. This is because it’s the year 2016 and that’s still how we do things. But I’d like to do some mental time traveling. Let’s pretend it’s the year 2018 and the CSS Grid Layout module is supported by all major browsers. Our page layout paradigm has shifted completely, and CSS capabilities are finally in harmony with our design goals. It’s a great time to be a web developer. Let’s create a home page using our awesome new tool.&lt;!-- excerpt-end --&gt;&lt;/p&gt;
+
+&lt;p&gt;Eck, it’s actually still 2016 and grid doesn’t work everywhere yet, so to view these demos you’ll need a grid-capable browser. I suggest using Chrome 49+ with the &lt;em&gt;Experimental Web Platform features&lt;/em&gt; flag enabled (go to the URL chrome://flags and scroll down to “Experimental Web Platform features”). Okay, back to 2018.&lt;/p&gt;
+
+&lt;h3&gt;The Design&lt;/h3&gt;
+
+&lt;p&gt;Here’s the page we’ll be creating:&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Apr 2016 00:00:00 -0500</pubDate>
+        <link>http://chris.house/blog/building-a-home-page-with-grid/</link>
+        <guid isPermaLink="true">http://chris.house/blog/building-a-home-page-with-grid/</guid>
+        
+        <category>css</category>
+        
+        <category>css grid</category>
+        
+        
+      </item>
     
       <item>
         <title>Why You Should Consider Linux for Web Development</title>
