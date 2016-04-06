@@ -6,8 +6,8 @@
 </description>
     <link>http://chris.house/</link>
     <atom:link href="http://chris.house/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Apr 2016 16:26:43 -0500</pubDate>
-    <lastBuildDate>Wed, 06 Apr 2016 16:26:43 -0500</lastBuildDate>
+    <pubDate>Wed, 06 Apr 2016 16:33:59 -0500</pubDate>
+    <lastBuildDate>Wed, 06 Apr 2016 16:33:59 -0500</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -63,27 +63,6 @@
         <category>css</category>
         
         <category>responsive web design</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Building a Home Page with Grid</title>
-        <description>&lt;p&gt;When I begin a project and start planning how to lay out the home page, my brain jumps to floats and positioning. Some of you might go with Bootstrap or another framework. This is because it’s the year 2016 and that’s still how we do things. But I’d like to do some mental time traveling. Let’s pretend it’s the year 2018 and the CSS Grid Layout module is supported by all major browsers. Our page layout paradigm has shifted completely, and CSS capabilities are finally in harmony with our design goals. It’s a great time to be a web developer. Let’s create a home page using our awesome new tool.&lt;!-- excerpt-end --&gt;&lt;/p&gt;
-
-&lt;p&gt;Eck, it’s actually still 2016 and grid doesn’t work everywhere yet, so to view these demos you’ll need a grid-capable browser. I suggest using Chrome 49+ with the &lt;em&gt;Experimental Web Platform features&lt;/em&gt; flag enabled (go to the URL chrome://flags and scroll down to “Experimental Web Platform features”). Okay, back to 2018.&lt;/p&gt;
-
-&lt;h3&gt;The Design&lt;/h3&gt;
-
-&lt;p&gt;Here’s the page we’ll be creating:&lt;/p&gt;
-</description>
-        <pubDate>Fri, 01 Apr 2016 00:00:00 -0500</pubDate>
-        <link>http://chris.house/blog/building-a-home-page-with-grid/</link>
-        <guid isPermaLink="true">http://chris.house/blog/building-a-home-page-with-grid/</guid>
-        
-        <category>css</category>
-        
-        <category>css grid</category>
         
         
       </item>
