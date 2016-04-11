@@ -87,7 +87,7 @@ body{
 
 We've just created a grid that's four columns wide by six rows high. The first and last columns will act as padding on either side of the main content. I set the third column to 400px because that's where we'll be placing the `side-bar` element, and we want that to be a fixed width. The `hero` element (the third row) will have a fixed height of 950px.
 
-Now let's define which grid area will go where using `grid-template-areas`. This is really fun part:
+Now let's define which grid area will go where using `grid-template-areas`. This is the really fun part:
 
 {% highlight css %}
 body{
@@ -108,11 +108,11 @@ body{
 
 When a grid area name is repeated, that element will span across those columns/rows. For instance, `top-bar` spans across all four columns, and `side-bar` spans down rows four and five. The periods represent empty cells. If you refer to the complete design back at the top, you'll see how this definition matches our grid pattern.
 
-Assuming we've applied all of our styling but haven't assigned grid area names to our grid items, right now our page is looking pretty funky:
+Assuming we've applied all of our styling but haven't yet assigned grid area names to our grid items, right now our page is looking pretty funky:
 
 ![Grid Page Broken](/images/grid-page-broken.jpg)
 
-Until we assign grid area names to the elements we're placing on the grid, the grid is going to automatically place our elements in the grid based on their source order. Obviously this isn't what we want. In order for our layout to work as expected we need to define our grid areas. So let's go ahead and do that:
+Until we assign grid area names to the grid items, the grid is going to automatically place our elements in the grid based on their source order. Obviously this isn't what we want. In order for our layout to work as expected we need to define our grid areas. So let's go ahead and do that:
 
 {% highlight css %}
 .top-bar{
@@ -138,7 +138,9 @@ Until we assign grid area names to the elements we're placing on the grid, the g
 }
 {% endhighlight %}	
 
-Remember that these names can be anything you want. I chose to have them match the class names purely for convenience. Now that we've assigned grid area names to our grid items, they'll fall into place on our grid. This single step makes a world of difference:
+Remember that these names can be anything you want. I chose to have them match the class names purely for convenience. 
+
+Now that we've assigned grid area names to our grid items, they'll fall into place on our grid. This single step makes a world of difference:
 
 ![Grid Page Fixed](/images/grid-page-fixed.jpg)
 
@@ -152,7 +154,7 @@ body{
 }
 {% endhighlight %}
 
-The two columns set to 12% are used for padding around the main content, *but they're only utilized for the fourth and fifth rows*. As you recall, we told our `top-bar`, `main-header`, `hero` and `main-footer` to span across all the columns, including these two "padding" columns. Why did we do this? Because we want the backgrounds of these elements to span 100% of the viewport width with no white space on either side. We only want white space around the `blog-post`/`news` and `sidebar` elements (rows four and five).
+The two columns set to 12% are used for padding around the main content, *but they're only utilized for the fourth and fifth rows*. As you recall, we told our `top-bar`, `main-header`, `hero` and `main-footer` elements to span across all the columns, including these two "padding" columns. Why did we do this? Because we want the backgrounds of these elements to span 100% of the viewport width with no white space on either side. We only want white space around the `blog-post`/`news` and `sidebar` elements (rows four and five).
 
 In order to stretch our elements across the full width of the grid while still maintaining padding on either side of the content, we need to explicitly set padding on those elements:
 
