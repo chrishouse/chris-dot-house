@@ -21,7 +21,7 @@ Before we actually start coding we need to get into the grid mindset. The first 
 
 ![Complete Design Highlighted](/images/grid-page-highlight.jpg)
 
-You can see we're working with seven top-level grid areas. I say "top-level" because we're able to nest grids, which is exactly what we'll be doing with the hero section:
+You can see we're working with seven top-level grid areas. I say "top-level" because we're able to nest grids, which is exactly what we'll be doing with the `hero` section:
 
 ![Hero Highlighted](/images/grid-page-hero-highlight.jpg)
 
