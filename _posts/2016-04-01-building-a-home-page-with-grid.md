@@ -101,7 +101,6 @@ body{
                        ".           news        side-bar    ."
                        "main-footer main-footer main-footer main-footer";  
 }
-
 {% endhighlight %}
 
 `grid-template-areas` lets us place our elements wherever we want, and it gives us a nice visualization of how it'll all look. Remember that the values used here ("top-bar", "main-header", "hero", etc.) aren't referring to the class names of those elements, but rather to the names we give them with the `grid-area` property, which we'll do in a moment.
@@ -216,3 +215,74 @@ With that, `message` and `award` snap into place and our page is complete:
 ![Complete Design](/images/grid-page-complete.jpg)
 
 ### Making It Responsive
+
+CSS Grid makes it incredibly easy to rearrange your entire layout with media queries. All you do is re-place your grid items. For our design we'll keep things fairly simple and only use two breakpoints, one at 1600px and one at 1050px. There'll be a handful of minor formatting adjustments we'll need to make to some elements (padding, margin, etc.), but I won't show all of that here. I'll present the entire code at the end, for now focusing on the grid stuff.
+
+Our 1600px breakpoint is the simpler one. It's where we'll reduce the outer padding of the site. I chose 1600px because that's right around the point where the 12% padding starts to look funny. So let's fix that. What we need to do is change the value of `grid-template-columns` on `body`, reducing the first and last columns to 2%. We'll also need to adjust the padding on our other elements to match:
+
+{% highlight css %}
+@media (max-width: 1600px) {
+  body{
+    grid-template-columns: 2% auto 400px 2%;
+  }
+  .top-bar{
+    padding: 4px 2%;
+  }
+  .main-header{
+    padding: 12px 2%;
+  }
+  .hero{
+    padding: 55px 2% 0 2%;
+  }
+  .main-footer{
+    padding: 25px 2%;
+  }
+}
+{% endhighlight %}
+
+Now for the next breakpoint. We'll be rearranging the grid items to make them lay out in a single column. As a reminder here's how our original code looked for `body`:
+
+{% highlight css %}
+body{
+  display: grid;
+  grid-template-columns: 12% auto 400px 12%;
+  grid-template-rows: auto auto 950px auto auto auto;
+  grid-template-areas: "top-bar     top-bar     top-bar     top-bar"
+                       "main-header main-header main-header main-header"
+                       "hero        hero        hero        hero"
+                       ".           blog-posts  side-bar    ."
+                       ".           news        side-bar    ."
+                       "main-footer main-footer main-footer main-footer";  
+}
+{% endhighlight %}
+
+And here's our new media query:
+
+{% highlight css %}
+@media (max-width: 1050px) {
+  body{
+    grid-template-columns: 3% auto 3%;
+    grid-template-rows: auto auto auto auto auto auto auto;
+    grid-template-areas: "top-bar     top-bar     top-bar"
+                         "main-header main-header main-header"
+                         "hero        hero        hero"
+                         ".           blog-posts  ."
+                         ".           news        ."
+                         ".           side-bar    ."
+                         "main-footer main-footer main-footer";
+  }
+}  
+{% endhighlight %}
+
+We've made a few important changes here: reduced the number of columns from four to three, changed the values of the first and last columns to `3%` (3% works better than 2% at the narrower widths), added an additional row, changed the length of all the rows to `auto`, and moved the side-bar to its own row. Now our page elements fit nicely at narrow widths:
+
+![Grid Page Narrow](/images/grid-page-narrow.jpg)
+
+### The Live Code
+
+Here's our home page, live and working, as well as the complete HTML and CSS files. To properly view this you'll need a grid-capable browser. I suggest Chrome 49+ with the *Experimental Web Platform Features* flag enabled (browse to chrome://flags and scroll down to "Experimental Web Platform Features"). 
+
+The embedded page below will appear in mobile view by default, so be sure to click "Edit on Codepen" to see the page at full width:
+
+<p data-height="268" data-theme-id="0" data-slug-hash="dMdKqw" data-default-tab="result" data-user="chrishouse" class="codepen">See the Pen <a href="http://codepen.io/chrishouse/pen/dMdKqw/">Building a Home Page with Grid</a> by Chris House (<a href="http://codepen.io/chrishouse">@chrishouse</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
