@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Building a Home Page with Grid"
-date:   2016-04-10
+date:   2016-04-12
 updated: 
 author: Chris House
 comments: true
