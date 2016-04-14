@@ -256,7 +256,7 @@ Here's a browser support table which I'll keep up-to-date:
 {% highlight css %}
 .container{
   grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
-  grid-template-rows: [row1-start] 25% [row1-end] 100% [third-line] auto [last-line];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
 }
 {% endhighlight %}
 <img src="/images/grid-names.png" alt="Grid with user named lines">
