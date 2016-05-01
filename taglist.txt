@@ -1,6 +1,7 @@
 css
 css grid
 css custom properties
+javascript
 static site generators
 jekyll
 grunt
