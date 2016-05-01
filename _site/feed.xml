@@ -6,9 +6,87 @@
 </description>
     <link>http://chris.house/</link>
     <atom:link href="http://chris.house/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Apr 2016 19:57:32 -0500</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2016 19:57:32 -0500</lastBuildDate>
+    <pubDate>Sun, 01 May 2016 15:29:56 -0500</pubDate>
+    <lastBuildDate>Sun, 01 May 2016 15:29:56 -0500</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Misconceptions I Once Had About JavaScript</title>
+        <description>&lt;p&gt;By “once” I mean very recently, like until three weeks ago when I read Kyle Simpson’s &lt;a href=&quot;https://github.com/getify/You-Dont-Know-JS&quot;&gt;&lt;em&gt;You Don’t Know JavaScript&lt;/em&gt;&lt;/a&gt; series. In the books he takes a no-nonsense approach to diving deep into the inner workings of JavaScript, along the way laying to rest some common misconceptions about the language. I was enlightened. I want to share some of his myth busts which I found most interesting and helpful. &lt;!-- excerpt-end --&gt;&lt;/p&gt;
+
+&lt;h3&gt;Stuff I Had Wrong&lt;/h3&gt;
+
+&lt;h4&gt;JavaScript is an Interpreted Language&lt;/h4&gt;
+
+&lt;p&gt;JavaScript is very commonly labeled a “dynamic, interpreted language”. An interpreted language is one in which the code is translated line by line every time the program is run. This is different from a compiled language, where the code is translated ahead of time and what runs is pre-compiled code. Since the browser runs our JavaScript code without us needing to compile it first, most people consider it to be an interpreted language. But the truth is that it’s actually compiled.&lt;/p&gt;
+
+&lt;p&gt;JavaScript engines actually perform the same compilation steps as other languages traditionally labeled as compiled. These steps - tokenizing, parsing and code generation - are all performed &lt;em&gt;before&lt;/em&gt; the program is executed. The main differences, and the reason JS is often considered interpreted instead of compiled, is that this compilation happens in such close conjunction with the final execution that the two phases are seamless. It all happens by the JS engine mere milliseconds before our program runs.&lt;/p&gt;
+
+&lt;p&gt;Admittedly this seems like a fairly negligible distinction in terms of practicality. But if you’re concerned about technical accuracy in the way you describe things, then it’s an important distinction to make.&lt;/p&gt;
+
+&lt;h4&gt;The “this” Identifier Refers to the Function Itself&lt;/h4&gt;
+
+&lt;p&gt;I had always thought that &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; refers to the function in which it lives. But that’s not how it works. As Kyle explains it, &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; “usually points to an &lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt;. But which &lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt; it points to depends on how the function was called.” I’ll take his examples straight from the book because they do most of the explaining:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    	
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;global&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;obj1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;	
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;obj2&quot;&lt;/span&gt;	
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;// &quot;global&quot; (or undefined in strict mode)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;obj1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// &quot;obj1&quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;obj2&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The four techniques shown here demonstrate the four rules that determine what &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; refers to. It’s all about how the function was called.&lt;/p&gt;
+
+&lt;h4&gt;”===” Checks for Type Equality&lt;/h4&gt;
+
+&lt;p&gt;Equality comparisons are one of the first things taught to people learning JavaScript (or most any language). I, like many people, was taught that &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; checks for equality of the value only, while &lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt; checks for equality of both the value and &lt;em&gt;type&lt;/em&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;42 == &quot;42&quot; //true&lt;/code&gt;, but &lt;code class=&quot;highlighter-rouge&quot;&gt;42 === &quot;42&quot; //false&lt;/code&gt;. But this isn’t actually what’s going on. While it’s true that &lt;code class=&quot;highlighter-rouge&quot;&gt;42 === &quot;42&quot;&lt;/code&gt; is false, it’s not because the &lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt; is checking for type; it’s because &lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt; is checking for value equality without &lt;em&gt;coercion&lt;/em&gt; allowed.&lt;/p&gt;
+
+&lt;p&gt;Coercion is the process of converting from one type to another. When you use the &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; comparison with different types - like &lt;code class=&quot;highlighter-rouge&quot;&gt;42&lt;/code&gt; (a number) and &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;42&quot;&lt;/code&gt; (a string) - JS sees that they’re different types and begins coercing one or both values until the types match. But when you use &lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt; to compare two values of different types, this coercion step never occurs. Thus it should be thought of that &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; checks for value equality with coercion allowed, and &lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt; checks for value equality &lt;em&gt;without&lt;/em&gt; coercion allowed.&lt;/p&gt;
+
+&lt;p&gt;Is this splitting hairs? Possibly. But again, I find it valuable to truly understand what’s happening with my code and to be able to describe it accurately. Saying that &lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt; checks for “type equality” is a technical mis-characterization which I’m glad has been set straight for me.&lt;/p&gt;
+
+&lt;h4&gt;Two Arrays with the Same Contents Are == Equal&lt;/h4&gt;
+
+&lt;p&gt;They are, in fact, NOT equal:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Despite that fact that the values of both &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; are arrays with the same contents, they are still &lt;em&gt;references&lt;/em&gt; to different arrays. And that’s the key - we’re not comparing two sets of contents, we’re checking if two &lt;code class=&quot;highlighter-rouge&quot;&gt;objects&lt;/code&gt; are the same object. Obviously &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; is different than &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;, so they’re not equal.&lt;/p&gt;
+
+&lt;p&gt;Some of you may be saying “duh” on this one, but it just never occurred to me.&lt;/p&gt;
+
+&lt;h4&gt;NaN !== NaN is a JavaScript Bug&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NaN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;NaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This should be &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;, right? Nope, not really. A lot of people consider this a quirk, or worse a bug, of JavaScript. But when you think about what you’re comparing it couldn’t be any other way. The &lt;code class=&quot;highlighter-rouge&quot;&gt;NaN&lt;/code&gt; property is a symbol, similar to infinity, that describes a concept rather than a value. More specifically, it describes what something &lt;em&gt;isn’t&lt;/em&gt; (not-a-number), rather than what something &lt;em&gt;is&lt;/em&gt;. If value A isn’t a number and value B isn’t a number, is value A necessarily equal to value B? Of course not.&lt;/p&gt;
+
+&lt;p&gt;There are some behaviors of JS that are legit quirks ( &lt;code class=&quot;highlighter-rouge&quot;&gt;typeof(null);  // &quot;object&quot;&lt;/code&gt; what? ), but this isn’t one of them.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 May 2016 00:00:00 -0500</pubDate>
+        <link>http://chris.house/blog/misconceptions-i-once-had-about-javascript/</link>
+        <guid isPermaLink="true">http://chris.house/blog/misconceptions-i-once-had-about-javascript/</guid>
+        
+        <category>javascript</category>
+        
+        
+      </item>
     
       <item>
         <title>Building a Home Page with Grid</title>
