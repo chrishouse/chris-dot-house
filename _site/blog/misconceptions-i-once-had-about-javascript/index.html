@@ -122,10 +122,10 @@
  <span class="na">bar</span><span class="p">:</span> <span class="s2">"obj2"</span>	
 <span class="p">};</span>
 
-<span class="nx">foo</span><span class="p">();</span>           <span class="c1">// "global" (or undefined in strict mode)</span>
-<span class="nx">obj1</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>      <span class="c1">// "obj1"</span>
-<span class="nx">foo</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">obj2</span> <span class="p">)</span> <span class="c1">// "obj2"</span>
-<span class="k">new</span> <span class="nx">foo</span><span class="p">();</span>       <span class="c1">// undefined</span></code></pre></figure>
+<span class="nx">foo</span><span class="p">();</span>            <span class="c1">// "global" (or undefined in strict mode)</span>
+<span class="nx">obj1</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>       <span class="c1">// "obj1"</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">obj2</span> <span class="p">);</span> <span class="c1">// "obj2"</span>
+<span class="k">new</span> <span class="nx">foo</span><span class="p">();</span>        <span class="c1">// undefined</span></code></pre></figure>
 
 <p>The four techniques shown here demonstrate the four rules that determine what <code class="highlighter-rouge">this</code> refers to. It’s all about how the function was called.</p>
 
